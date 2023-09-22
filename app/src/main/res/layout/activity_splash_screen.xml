@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen"
+    android:background="@drawable/background_splash_screen">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/gambar2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:id="@+id/SS_img_1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SS_img_1"
+        android:text="SiDuta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="30dp"
+        android:textColor="@color/secondaryColor"
+        android:id="@+id/SS_txt_1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SS_txt_1"
+        android:text="Selamat Datang di SiDuta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:id="@+id/SS_txt_2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SS_txt_2"
+        android:text="Menjaga Generasi Sehat Untuk Bangun Masa Depan"
+        android:padding="20dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/SS_txt_3"/>
+
+</RelativeLayout>
