@@ -33,9 +33,9 @@
         android:layout_below="@+id/SS_txt_1"
         android:text="Selamat Datang di SiDuta"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/poppinsbold"
-        android:textSize="25dp"
+        android:textSize="22sp"
         android:textColor="@color/black"
         android:id="@+id/SS_txt_2" />
 
@@ -48,7 +48,7 @@
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/poppinsmedium"
-        android:textSize="20dp"
+        android:textSize="17sp"
         android:textColor="@color/black"
         android:id="@+id/SS_txt_3"/>
 

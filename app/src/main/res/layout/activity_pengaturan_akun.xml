@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PengaturanAkunActivity">
+
+    <LinearLayout
+        android:id="@+id/PG_ly_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp">
+        <ImageButton
+            android:id="@+id/PG_img_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/PG_img_1"
+            android:layout_marginLeft="5dp"
+            android:text="Pengaturan Akun"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="17dp"
+            android:textColor="@color/black"
+            android:id="@+id/PG_txt_1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PG_ly_2"
+        android:layout_below="@id/PG_ly_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="50dp" >
+        <TextView
+            android:id="@+id/PG_txt_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hapus Akun"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="15sp"
+            android:textColor="@color/grey"
+            android:layout_marginLeft="30dp" />
+        <ImageButton
+            android:id="@+id/PG_img_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_next"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/PG_ly_3"
+        android:layout_below="@id/PG_ly_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="20dp" >
+        <TextView
+            android:id="@+id/PG_txt_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Keluar"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="15sp"
+            android:textColor="@color/grey"
+            android:layout_marginLeft="30dp" />
+        <ImageButton
+            android:id="@+id/PG_img_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_next"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </LinearLayout>
+
+</RelativeLayout>

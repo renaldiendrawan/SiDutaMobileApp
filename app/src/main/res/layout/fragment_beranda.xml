@@ -4,47 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".BerandaActivity"
-    android:background="@drawable/background_beranda">
+    tools:context=".BerandaFragment"
+    android:background="@drawable/backgroundberanda">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/berandaFragment">
+        android:id="@+id/berandaFragment" >
 
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_person_24"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="18dp"
-            android:layout_marginTop="18dp"
-            android:id="@+id/B_img_1"
-            android:background="@drawable/background_profil"/>
+            android:layout_marginRight="18dp">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_akun"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/background_profil"
+                android:src="@drawable/ic_person1"
+                tools:ignore="SpeakableTextPresentCheck"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/B_txt_4"
-            android:layout_below="@+id/B_img_1"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="2dp"
-            android:text="Akun"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/poppinssemibold"/>
+            android:id="@+id/B_txt_5"
+            android:text="Text View"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppinsbold"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="35dp"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/B_txt_1"
+            android:layout_below="@id/B_txt_5"
             android:text="Selamat Datang di SiDuta!"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:fontFamily="@font/poppinssemibold"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="27dp"
+            android:layout_marginTop="0dp"
             android:textColor="@color/white"/>
 
         <TextView
@@ -54,11 +61,10 @@
             android:text="Jadwal"
             android:fontFamily="@font/poppinssemibold"
             android:textSize="18sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:id="@+id/B_txt_2"
-            />
+            android:layout_marginTop="55dp"
+            android:id="@+id/B_txt_2" />
 
         <GridLayout
             android:id="@+id/B_gl_1"
@@ -96,7 +102,7 @@
                         android:fontFamily="@font/poppinsmedium"
                         android:text="Imunisasi"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textAlignment="center"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -128,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:text="Penimbangan"
                         android:fontFamily="@font/poppinsmedium"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="@color/black"
                         android:textAlignment="center"
                         android:layout_marginTop="4dp"
@@ -146,7 +152,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/B_txt_3"/>
 
         <GridLayout
@@ -187,7 +193,7 @@
                         android:fontFamily="@font/poppinsmedium"
                         android:text="Imunisasi"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textAlignment="center"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -219,12 +225,13 @@
                         android:layout_height="wrap_content"
                         android:text="Penimbangan"
                         android:fontFamily="@font/poppinsmedium"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="@color/black"
                         android:textAlignment="center"
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
         </GridLayout>
     </RelativeLayout>
 

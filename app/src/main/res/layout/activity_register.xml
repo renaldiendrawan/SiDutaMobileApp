@@ -7,105 +7,163 @@
     tools:context=".RegisterActivity">
 
     <ImageButton
+        android:id="@+id/R_img_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_back"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:id="@+id/R_img_1"
         android:background="@android:color/transparent"
-        />
+        android:src="@drawable/ic_back"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/R_img_1"
         android:text="Daftar Akun"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppinssemibold"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
-        android:id="@+id/R_txt_1"
-        />
+        android:id="@+id/R_txt_1" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:layout_below="@+id/R_txt_1"
         android:padding="30dp"
         android:id="@+id/R_ly_1">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/button_shape"
-            android:hint="Nama Orang Tua"
-            android:textColorHint="@color/grey"
-            android:paddingLeft="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:id="@+id/R_edt_namaorangtua"
-            />
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_person_outline"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_edt_namaorangtua"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:ems="10"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Nama Orang Tua"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/button_shape"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="NIK Orang Tua"
-            android:textColorHint="@color/grey"
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:backgroundTint="@color/white"
-            android:id="@+id/R_edt_nikorangtua"
-            />
+            app:startIconDrawable="@drawable/ic_card"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_edt_nikorangtua"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="NIK Orang Tua"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/button_shape"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Tanggal Lahir Orang Tua"
-            android:textColorHint="@color/grey"
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:backgroundTint="@color/white"
-            android:id="@+id/R_edt_tanggallahir"
-            />
+            app:startIconDrawable="@drawable/ic_calendar2"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_edt_tanggallahir"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Tanggal Lahir Orang Tua"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/R_textinputlayoutkatasandi"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/button_shape"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Kata Sandi"
-            android:textColorHint="@color/grey"
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:backgroundTint="@color/white"
-            android:id="@+id/R_edt_katasandi"
-            />
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/grey"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/grey"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:helperTextEnabled="true"
+            app:helperText="Masukkan Kata Sandi"
+            app:helperTextTextColor="@color/primaryColor">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_inputkatasandi"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Kata Sandi"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15sp"
+                android:inputType="textPassword"
+                android:ems="15"
+                android:typeface="normal"
+                tools:ignore="TextSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/R_textinputlayoutkonfirmasikatasandi"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:background="@drawable/button_shape"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Konfirmasi Kata Sandi"
-            android:textColorHint="@color/grey"
-            android:fontFamily="@font/poppinsmedium"
-            android:textSize="15dp"
-            android:paddingLeft="10dp"
-            android:backgroundTint="@color/white"
-            android:id="@+id/R_edt_konfirmasikatasandi"
-            />
-
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/grey"
+            app:startIconDrawable="@drawable/ic_lock_open"
+            app:startIconTint="@color/grey"
+            app:counterEnabled="true"
+            app:counterMaxLength="20"
+            app:helperTextEnabled="true"
+            app:helperText="Masukkan Ulang Kata Sandi"
+            app:helperTextTextColor="@color/primaryColor">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_inputkonfirmasikatasandi"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Konfirmasi Kata Sandi"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15sp"
+                android:inputType="textPassword"
+                android:ems="15"
+                android:typeface="normal"
+                tools:ignore="TextSizeCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <Button
@@ -114,13 +172,13 @@
         android:text="Daftar"
         android:layout_below="@+id/R_ly_1"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button_shape"
         android:width="300dp"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:fontFamily="@font/poppinssemibold"
-        android:id="@+id/R_btn_1"
-        />
+        android:id="@+id/R_btn_1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -128,17 +186,14 @@
         android:orientation="horizontal"
         android:layout_below="@+id/R_btn_1"
         android:gravity="center"
-        android:layout_marginTop="15dp">
-
+        android:layout_marginTop="10dp" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sudah memiliki akun? "
             android:fontFamily="@font/poppinsmedium"
             android:textSize="15sp"
-            android:textColor="@color/grey"
-            />
-
+            android:textColor="@color/grey" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,9 +201,7 @@
             android:fontFamily="@font/poppinsmedium"
             android:textSize="15sp"
             android:textColor="@color/primaryColor"
-            android:id="@+id/R_txt_masuk"
-            />
-
+            android:id="@+id/R_txt_masuk" />
     </LinearLayout>
 
 </RelativeLayout>
