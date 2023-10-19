@@ -44,7 +44,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/background_profil"
-        android:src="@drawable/ic_person1"
+        android:src="@drawable/ic_person_outline"
         android:backgroundTint="@color/lightgrey"
         tools:ignore="SpeakableTextPresentCheck"/>
 
@@ -109,18 +109,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/PF_edt_jeniskelamin"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Jenis Kelamin"
-                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Jenis Kelamin Orang Tua"
                 android:textColorHint="@color/grey"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:backgroundTint="@color/white"
+                android:id="@+id/PF_edt_jeniskelaminorangtua"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

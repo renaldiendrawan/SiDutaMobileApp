@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,21 +16,29 @@ import com.example.aplikasieduta.MainActivity;
 import com.example.aplikasieduta.RegisterActivity;
 import com.example.aplikasieduta.LupaKataSandiActivity;
 import com.example.aplikasieduta.BerandaActivity;
+import com.example.aplikasieduta.retrofit.ApiService;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
     TextInputLayout textInputLayout;
     TextInputEditText textInputEditText;
+    private final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getDataFromApi();
 
         // Mendapatkan referensi ke tombol Back
         ImageButton backButton = findViewById(R.id.L_img_1);
@@ -108,5 +117,26 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void getDataFromApi () {
+
+        ApiService.endpoint().getUser()
+                .enqueue(new Callback<UserModel>() {
+                    @Override
+                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                       if (response.isSuccessful()) {
+                           List<UserModel.Result> results = response.body().getResult();
+                           Log.d(TAG, results.toString());
+                       }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserModel> call, Throwable t) {
+                        Log.d(TAG, t.toString());
+                    }
+                });
+
     }
 }

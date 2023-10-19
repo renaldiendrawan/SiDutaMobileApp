@@ -8,4 +8,9 @@
         <item name="colorOnPrimary">@color/grey</item>
         <item name="colorOnBackground">@color/lightgrey</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+
+    </style>
+
 </resources>

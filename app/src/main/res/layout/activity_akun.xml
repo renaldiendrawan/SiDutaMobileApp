@@ -40,7 +40,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/background_profil"
-        android:src="@drawable/ic_person1"
+        android:src="@drawable/ic_person_outline"
         android:backgroundTint="@color/lightgrey"
         tools:ignore="SpeakableTextPresentCheck"/>
 

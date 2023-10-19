@@ -10,21 +10,23 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.example.aplikasieduta.jadwalfragments.JadwalImunisasiFragment;
+import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BerandaActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+    public static String FRAGMENT = "fragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
 
-        String nama ;
-//        Bundle extras = getIntent().getExtras();
-//        nama = extras.getString("KEY_NAME");
+        String nama;
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,10 +53,36 @@ public class BerandaActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        // Set the initial fragment to display
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.flFragment, new BerandaFragment())
                 .commit();
+
+        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT,0) == R.layout.fragment_jadwal){
+            bottomNavigationView.setSelectedItemId(R.id.jadwal);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragment,new JadwalFragment())
+                    .commit();
+        }
+
+        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT,0) == R.layout.fragment_jadwal){
+            bottomNavigationView.setSelectedItemId(R.id.jadwal);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragment,new JadwalFragment())
+                    .commit();
+        }
+
+        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT,0) == R.layout.fragment_laporan){
+            bottomNavigationView.setSelectedItemId(R.id.laporan);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragment,new LaporanFragment())
+                    .commit();
+        }
+
+        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT,0) == R.layout.fragment_laporan){
+            bottomNavigationView.setSelectedItemId(R.id.laporan);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragment,new LaporanFragment())
+                    .commit();
+        }
     }
 }
