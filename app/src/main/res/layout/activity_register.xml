@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageButton
         android:id="@+id/R_img_1"
         android:layout_width="wrap_content"
@@ -21,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/R_img_1"
         android:text="Daftar Akun"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/poppinssemibold"
         android:textSize="20dp"
         android:layout_centerHorizontal="true"
@@ -84,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:startIconDrawable="@drawable/ic_calendar2"
+            app:startIconDrawable="@drawable/ic_calendar"
             app:startIconTint="@color/grey">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/R_edt_tanggallahir"
@@ -98,7 +101,49 @@
                 android:paddingLeft="10dp"
                 android:textColorHint="@color/grey"
                 android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                tools:ignore="TextSizeCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:startIconDrawable="@drawable/ic_alamat"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_edt_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Alamat"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:startIconDrawable="@drawable/ic_telepon"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/R_edt_nomortelepon"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Nomor Telepon"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -133,37 +178,37 @@
                 tools:ignore="TextSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/R_textinputlayoutkonfirmasikatasandi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:endIconMode="password_toggle"
-            app:endIconTint="@color/grey"
-            app:startIconDrawable="@drawable/ic_lock_open"
-            app:startIconTint="@color/grey"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:helperTextEnabled="true"
-            app:helperText="Masukkan Ulang Kata Sandi"
-            app:helperTextTextColor="@color/primaryColor">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/R_inputkonfirmasikatasandi"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Konfirmasi Kata Sandi"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15sp"
-                android:inputType="textPassword"
-                android:ems="15"
-                android:typeface="normal"
-                tools:ignore="TextSizeCheck"/>
-        </com.google.android.material.textfield.TextInputLayout>
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/R_textinputlayoutkonfirmasikatasandi"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            app:endIconMode="password_toggle"-->
+<!--            app:endIconTint="@color/grey"-->
+<!--            app:startIconDrawable="@drawable/ic_lock_open"-->
+<!--            app:startIconTint="@color/grey"-->
+<!--            app:counterEnabled="true"-->
+<!--            app:counterMaxLength="20"-->
+<!--            app:helperTextEnabled="true"-->
+<!--            app:helperText="Masukkan Ulang Kata Sandi"-->
+<!--            app:helperTextTextColor="@color/primaryColor">-->
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/R_inputkonfirmasikatasandi"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="57dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/button_shape"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:fontFamily="@font/poppinsmedium"-->
+<!--                android:hint="Konfirmasi Kata Sandi"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:textColorHint="@color/grey"-->
+<!--                android:textSize="15sp"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:ems="15"-->
+<!--                android:typeface="normal"-->
+<!--                tools:ignore="TextSizeCheck"/>-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
     </LinearLayout>
 
     <Button
@@ -172,7 +217,7 @@
         android:text="Daftar"
         android:layout_below="@+id/R_ly_1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_shape"
         android:width="300dp"
         android:textColor="@color/white"
@@ -186,7 +231,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/R_btn_1"
         android:gravity="center"
-        android:layout_marginTop="10dp" >
+        android:layout_marginTop="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -203,5 +248,5 @@
             android:textColor="@color/primaryColor"
             android:id="@+id/R_txt_masuk" />
     </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

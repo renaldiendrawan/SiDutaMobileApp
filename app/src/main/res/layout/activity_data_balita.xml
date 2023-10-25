@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DataBalitaActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/databalita">
+
+        <LinearLayout
+            android:id="@+id/DB_ly_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp">
+            <ImageButton
+                android:id="@+id/DB_img_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/DB_img_1"
+                android:layout_marginLeft="5dp"
+                android:text="Data Balita"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:id="@+id/DB_txt_1" />
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DB_btn_1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/DB_ly_1"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:background="@color/lightgrey"
+            app:shapeAppearanceOverlay="@style/circular"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_person1"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/DB_floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/DB_btn_1"
+            android:layout_alignBottom="@+id/DB_btn_1"
+            android:layout_marginEnd="-6dp"
+            android:layout_marginBottom="1dp"
+            android:backgroundTint="@color/primaryColor"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:focusable="true"
+            android:tint="@color/white"
+            app:backgroundTint="#000080"
+            app:srcCompat="@drawable/ic_camera"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/DB_btn_1"
+            android:layout_marginTop="10dp"
+            android:padding="30dp"
+            android:id="@+id/DB_ly_2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:hint="NIK Anak"
+                    android:textColorHint="@color/grey"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:id="@+id/DB_edt_nikanak" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nama Lengkap Anak"
+                    android:textColorHint="@color/grey"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:id="@+id/DB_edt_namalengkapanak" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:hint="Tanggal Lahir Anak"
+                    android:textColorHint="@color/grey"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:id="@+id/DB_edt_tanggallahiranak"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:hint="Jenis Kelamin Anak"
+                    android:textColorHint="@color/grey"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:id="@+id/DB_edt_jeniskelaminanak" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DB_ly_2"
+            android:text="Data Kelahiran"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:id="@+id/DB_txt_3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/DB_txt_3"
+            android:padding="30dp"
+            android:id="@+id/DB_ly_3">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:hint="Berat Badan saat lahir (kg)"
+                    android:textColorHint="@color/grey"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:id="@+id/DB_edt_beratbadanlahir" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:layout_marginTop="10dp"
+                    android:hint="Tinggi Badan saat lahir (cm)"
+                    android:textColorHint="@color/grey"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:id="@+id/DB_edt_tinggibadanlahir" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/DB_edt_linkarkepalalahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Lingkar Kepala saat lahir (cm)"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15dp"
+                    tools:ignore="TextSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DB_ly_3"
+            android:text="Data Orang Tua"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:id="@+id/DB_txt_4" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/DB_txt_4"
+            android:padding="30dp"
+            android:id="@+id/DB_ly_4">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:hint="Nama Ayah"
+                    android:textColorHint="@color/grey"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:id="@+id/DB_edt_namaayah" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:layout_marginTop="10dp"
+                    android:hint="Nama Ibu"
+                    android:textColorHint="@color/grey"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:textSize="15sp"
+                    android:paddingLeft="10dp"
+                    android:backgroundTint="@color/white"
+                    android:id="@+id/DB_edt_namaibu" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Simpan"
+            android:layout_below="@+id/DB_ly_4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/button_shape"
+            android:width="300dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppinssemibold"
+            android:id="@+id/DB_btn_2" />
+
+    </RelativeLayout>
+</ScrollView>

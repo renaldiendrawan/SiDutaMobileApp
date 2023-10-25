@@ -32,16 +32,17 @@
             android:id="@+id/A_txt_1" />
     </LinearLayout>
 
-    <ImageButton
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/A_btn_1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@id/A_ly_1"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/background_profil"
-        android:src="@drawable/ic_person_outline"
-        android:backgroundTint="@color/lightgrey"
+        android:layout_marginLeft="30dp"
+        android:background="@color/lightgrey"
+        app:srcCompat="@drawable/ic_person1"
+        app:shapeAppearanceOverlay="@style/circular"
+        android:padding="5dp"
         tools:ignore="SpeakableTextPresentCheck"/>
 
     <LinearLayout
@@ -51,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="30dp">
         <TextView
             android:id="@+id/A_txt_2"

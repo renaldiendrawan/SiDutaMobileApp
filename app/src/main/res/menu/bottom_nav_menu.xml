@@ -12,8 +12,4 @@
         android:id="@+id/laporan"
         android:title="Laporan"
         android:icon="@drawable/ic_laporan_foreground"/>
-    <item
-        android:id="@+id/profil"
-        android:title="Profil Balita"
-        android:icon="@drawable/ic_profil_foreground"/>
 </menu>

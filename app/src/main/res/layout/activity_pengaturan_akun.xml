@@ -78,7 +78,7 @@
             android:textColor="@color/grey"
             android:layout_marginLeft="30dp" />
         <ImageButton
-            android:id="@+id/PG_img_3"
+            android:id="@+id/PG_actionlogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"

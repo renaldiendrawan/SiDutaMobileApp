@@ -7,10 +7,16 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorOnPrimary">@color/grey</item>
         <item name="colorOnBackground">@color/lightgrey</item>
+        <item name="colorContainer">@color/blue</item>
+        <item name="colorOnContainer">@color/pink</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+    </style>
 
+    <style name="circular">
+        <item name="cornerSize">50%</item>
     </style>
 
 </resources>

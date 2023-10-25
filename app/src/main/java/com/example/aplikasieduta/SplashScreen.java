@@ -13,21 +13,31 @@ import androidx.core.content.ContextCompat;
 
 public class SplashScreen extends AppCompatActivity {
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //menghilangkan ActionBar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash_screen);
+
+        SessionManager sessionManager = new SessionManager(this);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                if (sessionManager.isLoggedIn()) {
+                    // Pengguna sudah login, arahkan ke halaman beranda
+                    Intent intent = new Intent(SplashScreen.this, BerandaActivity.class);
+                    startActivity(intent);
+                } else {
+                    // Pengguna belum login, arahkan ke halaman login
+                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
-        }, 3000L); //3000 L = 3 detik
+        }, 3000L); // 3000 L = 3 detik
     }
 }
+

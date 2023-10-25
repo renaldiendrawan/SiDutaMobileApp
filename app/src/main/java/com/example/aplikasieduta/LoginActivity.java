@@ -7,16 +7,16 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.aplikasieduta.MainActivity;
-import com.example.aplikasieduta.RegisterActivity;
-import com.example.aplikasieduta.LupaKataSandiActivity;
-import com.example.aplikasieduta.BerandaActivity;
-import com.example.aplikasieduta.retrofit.ApiService;
+
+import com.example.aplikasieduta.model.login.Login;
+import com.example.aplikasieduta.model.login.LoginData;
+import com.example.aplikasieduta.retrofit.ApiClient;
+import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -28,17 +28,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextInputLayout textInputLayout;
     TextInputEditText textInputEditText;
+    TextInputEditText L_edt_nik, L_inputkatasandi;
+    Button L_btn_1;
+    String nik, katasandi;
+    TextView L_txt_daftar;
+    ApiInterface apiInterface;
+    SessionManager sessionManager;
     private final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getDataFromApi();
 
         // Mendapatkan referensi ke tombol Back
         ImageButton backButton = findViewById(R.id.L_img_1);
@@ -96,47 +101,59 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Mendapatkan referensi ke tombol Masuk
-        Button registerButton = findViewById(R.id.L_btn_1);
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Ketika tombol Register diklik, buka halaman Beranda
-                Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
-                startActivity(intent);
-            }
-        });
+        L_edt_nik = findViewById(R.id.L_edt_nik);
+        L_inputkatasandi = findViewById(R.id.L_inputkatasandi);
 
-        // Mendapatkan referensi ke teks "Belum punya akun? Register"
-        TextView registerText = findViewById(R.id.L_txt_daftar);
-        registerText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Ketika teks "Belum punya akun? Register" diklik, buka halaman Register
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+        L_btn_1 = findViewById(R.id.L_btn_1);
+        L_btn_1.setOnClickListener(this);
+
+        L_txt_daftar = findViewById(R.id.L_txt_daftar);
+        L_txt_daftar.setOnClickListener(this);
     }
 
-    private void getDataFromApi () {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.L_btn_1:
+                nik = L_edt_nik.getText().toString();
+                katasandi = L_inputkatasandi.getText().toString();
+                login(nik, katasandi);
+                break;
+            case R.id.L_txt_daftar:
+                Intent intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 
-        ApiService.endpoint().getUser()
-                .enqueue(new Callback<UserModel>() {
-                    @Override
-                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                       if (response.isSuccessful()) {
-                           List<UserModel.Result> results = response.body().getResult();
-                           Log.d(TAG, results.toString());
-                       }
+    private void login(String nik, String katasandi) {
 
-                    }
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<Login> loginCall = apiInterface.loginResponse(nik, katasandi);
+        loginCall.enqueue(new Callback<Login>() {
+            @Override
+            public void onResponse(Call<Login> call, Response<Login> response) {
+                if(response.body() != null && response.isSuccessful() && response.body().isStatus()) {
 
-                    @Override
-                    public void onFailure(Call<UserModel> call, Throwable t) {
-                        Log.d(TAG, t.toString());
-                    }
-                });
+                    // Ini untuk menyimpan sesi
+                    sessionManager = new SessionManager(LoginActivity.this);
+                    LoginData loginData = response.body().getData();
+                    sessionManager.createLoginSession(loginData);
 
+                    // Ini untuk pindah
+                    Toast.makeText(LoginActivity.this, response.body().getData().getNamaIbu(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Login> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

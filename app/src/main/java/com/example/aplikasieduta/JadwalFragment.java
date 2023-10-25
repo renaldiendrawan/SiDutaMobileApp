@@ -1,17 +1,21 @@
 package com.example.aplikasieduta;
-
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+
+import com.example.aplikasieduta.MyViewPagerAdapter1;
+import com.example.aplikasieduta.MyViewPagerAdapter2;
+import com.example.aplikasieduta.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class JadwalFragment extends Fragment {
 
-    TabLayout tabLayout;
-    ViewPager2 viewPager2;
+    public static TabLayout tabLayout;
+    public static ViewPager2 viewPager2;
     MyViewPagerAdapter1 myViewPagerAdapter;
 
     public JadwalFragment(){
@@ -31,6 +35,18 @@ public class JadwalFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager2.setCurrentItem(tab.getPosition());
+
+                TabLayout tabLayout;
+                if (getActivity() != null) {
+                    tabLayout = getActivity().findViewById(R.id.LP_tablayout);
+                    // Lakukan sesuatu  dengan TabLayout, seperti memilih tab
+                    if (tabLayout != null) {
+                        TabLayout.Tab tabToSelect = tabLayout.getTabAt(1); // Misalnya, memilih tab pertama
+                        if (tabToSelect != null) {
+                            tabToSelect.select();
+                        }
+                    }
+                }
             }
 
             @Override

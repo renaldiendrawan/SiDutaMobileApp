@@ -36,35 +36,40 @@
             android:id="@+id/PF_txt_1" />
     </LinearLayout>
 
-    <ImageButton
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/PF_btn_1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/PF_ly_1"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/background_profil"
-        android:src="@drawable/ic_person_outline"
-        android:backgroundTint="@color/lightgrey"
+        android:layout_marginLeft="30dp"
+        android:background="@color/lightgrey"
+        app:shapeAppearanceOverlay="@style/circular"
+        android:padding="5dp"
+        app:srcCompat="@drawable/ic_person1"
         tools:ignore="SpeakableTextPresentCheck"/>
 
-        <TextView
-            android:id="@+id/PF_txt_2"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/PF_floatingActionButton2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/PF_btn_1"
-            android:layout_below="@id/PF_ly_1"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="78dp"
-            android:text="Unggah Foto Anda"
-            android:fontFamily="@font/poppinssemibold"
-            android:textSize="15sp"
-            android:textColor="@color/primaryColor"/>
+            android:layout_alignEnd="@+id/PF_btn_1"
+            android:layout_alignBottom="@+id/PF_btn_1"
+            android:layout_marginEnd="-6dp"
+            android:layout_marginBottom="1dp"
+            android:backgroundTint="@color/primaryColor"
+            android:clickable="true"
+            android:contentDescription="TODO"
+            android:focusable="true"
+            android:tint="@color/white"
+            app:backgroundTint="#000080"
+            app:srcCompat="@drawable/ic_camera"/>
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:layout_below="@+id/PF_btn_1"
         android:padding="30dp"
@@ -167,6 +172,7 @@
         android:text="Simpan"
         android:layout_below="@+id/PF_ly_2"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_shape"
         android:width="300dp"
