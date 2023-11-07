@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.TextView;
 
 public class PengaturanAkunActivity extends AppCompatActivity {
 
@@ -36,6 +37,15 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         // Mengaitkan OnClickListener ke tombol PG_actionlogout
         ImageButton logoutButton = findViewById(R.id.PG_actionlogout);
         logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogoutMenu(v);
+            }
+        });
+
+        // Mengaitkan OnClickListener ke TextView PG_txt_5
+        TextView pgText5 = findViewById(R.id.PG_txt_5);
+        pgText5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showLogoutMenu(v);
@@ -85,3 +95,4 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         popupMenu.show();
     }
 }
+

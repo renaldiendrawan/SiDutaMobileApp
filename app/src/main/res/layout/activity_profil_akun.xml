@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfilAkunActivity">
+    tools:context=".profilakun.ProfilAkunActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -118,32 +118,13 @@
                 android:layout_height="57dp"
                 android:background="@drawable/button_shape"
                 android:layout_marginTop="10dp"
-                android:hint="Jenis Kelamin Orang Tua"
+                android:hint="Tanggal Lahir Orang Tua"
                 android:textColorHint="@color/grey"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="15sp"
                 android:paddingLeft="10dp"
                 android:backgroundTint="@color/white"
-                android:id="@+id/PF_edt_jeniskelaminorangtua"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/PF_edt_desakelurahan"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Desa / Kelurahan"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                android:id="@+id/PF_edt_tanggallahir"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -164,6 +145,25 @@
                 android:textSize="15dp"
                 tools:ignore="TextSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/PF_edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Email"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <Button
@@ -179,7 +179,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:fontFamily="@font/poppinssemibold"
-        android:id="@+id/R_btn_1"/>
+        android:id="@+id/PF_btn_2"/>
 
     </RelativeLayout>
 </ScrollView>

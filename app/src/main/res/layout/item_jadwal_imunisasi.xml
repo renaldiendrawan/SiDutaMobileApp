@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/itemjadwalimunisasi"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginVertical="5dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
+        app:cardElevation="8dp" >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,8 +27,7 @@
                 android:drawableStart="@drawable/ic_date"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
-
+                android:textSize="10sp" />
             <TextView
                 android:id="@+id/JI_textjam"
                 android:layout_width="wrap_content"
@@ -41,7 +40,6 @@
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
                 android:textSize="10sp" />
-
             <TextView
                 android:id="@+id/JI_texttempat"
                 android:layout_width="wrap_content"
@@ -54,7 +52,6 @@
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
                 android:textSize="10sp" />
-
             <TextView
                 android:id="@+id/JI_textvaksin"
                 android:layout_width="wrap_content"
@@ -67,7 +64,6 @@
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
                 android:textSize="10sp" />
-
             <TextView
                 android:id="@+id/JI_textketerangan"
                 android:layout_width="wrap_content"
@@ -77,7 +73,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppinsregular"
-                android:text="Jadwal Imunisasi di Kelurahan Kauman, diharapkan kepada ibu yang mempunyai balita untuk datang di lokasi Posyandu"
+                android:text="Jadwal Imunisasi di Kelurahan Kauman, diharapkan kepada Ibu yang mempunyai balita untuk datang di lokasi Posyandu"
                 android:textColor="@color/grey"
                 android:textSize="10sp" />
         </RelativeLayout>

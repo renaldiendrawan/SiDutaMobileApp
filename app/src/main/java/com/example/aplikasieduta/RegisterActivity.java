@@ -33,10 +33,10 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextInputLayout textInputLayout;
-    TextInputEditText textInputEditText, R_edt_namaorangtua, R_edt_nikorangtua, R_edt_tanggallahir, R_edt_alamat, R_edt_nomortelepon, R_inputkatasandi;
+    TextInputEditText textInputEditText, R_edt_namaorangtua, R_edt_nikorangtua, R_edt_tanggallahir, R_edt_alamat, R_edt_email, R_inputkatasandi;
     Button R_btn_1;
     TextView R_txt_masuk;
-    String nama, nik, tanggallahir, alamat, nomortelepon, katasandi;
+    String nama, nik, tanggallahir, alamat, email, katasandi;
     ApiInterface apiInterface;
     private int tahun, bulan, tanggal;
 
@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // Date picker
         R_edt_tanggallahir = findViewById(R.id.R_edt_tanggallahir);
-
+        R_edt_tanggallahir.setFocusableInTouchMode(false);
         R_edt_tanggallahir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         R_edt_nikorangtua = findViewById(R.id.R_edt_nikorangtua);
         R_edt_tanggallahir = findViewById(R.id.R_edt_tanggallahir);
         R_edt_alamat = findViewById(R.id.R_edt_alamat);
-        R_edt_nomortelepon = findViewById(R.id.R_edt_nomortelepon);
+        R_edt_email = findViewById(R.id.R_edt_email);
         R_inputkatasandi = findViewById(R.id.R_inputkatasandi);
 
         R_btn_1 = findViewById(R.id.R_btn_1);
@@ -173,9 +173,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 nik = R_edt_nikorangtua.getText().toString();
                 tanggallahir = R_edt_tanggallahir.getText().toString();
                 alamat = R_edt_alamat.getText().toString();
-                nomortelepon = R_edt_nomortelepon.getText().toString();
+                email = R_edt_email.getText().toString();
                 katasandi = R_inputkatasandi.getText().toString();
-                register(nama, nik, tanggallahir, alamat, nomortelepon, katasandi);
+                register(nama, nik, tanggallahir, alamat, email, katasandi);
                 break;
             case R.id.R_txt_masuk:
                 Intent intent = new Intent(this, LoginActivity.class);
@@ -185,10 +185,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void register(String nama, String nik, String tanggallahir, String alamat, String nomortelepon, String katasandi) {
+    private void register(String nama, String nik, String tanggallahir, String alamat, String email, String katasandi) {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Register> call = apiInterface.registerResponse(nama, nik, tanggallahir, alamat, nomortelepon, katasandi);
+        Call<Register> call = apiInterface.registerResponse(nama, nik, tanggallahir, alamat, email, katasandi);
         call.enqueue(new Callback<Register>() {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {

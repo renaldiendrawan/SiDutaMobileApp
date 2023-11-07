@@ -80,7 +80,8 @@
                 android:paddingLeft="10dp"
                 android:textColorHint="@color/grey"
                 android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                android:inputType="number"
+                tools:ignore="TextSizeCheck"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -129,17 +130,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:startIconDrawable="@drawable/ic_telepon"
+            app:startIconDrawable="@drawable/email"
             app:startIconTint="@color/grey">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/R_edt_nomortelepon"
+                android:id="@+id/R_edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="57dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_shape"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinsmedium"
-                android:hint="Nomor Telepon"
+                android:hint="Email"
                 android:paddingLeft="10dp"
                 android:textColorHint="@color/grey"
                 android:textSize="15dp"

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GantiKataSandiActivity">
+
+    <ImageButton
+        android:id="@+id/GKS_img_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_back"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GKS_img_1"
+        android:text="Ganti Kata Sandi"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:id="@+id/GKS_txt_1"/>
+
+    <TextView
+        android:id="@+id/GKS_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GKS_txt_1"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Kode OTP"
+        android:fontFamily="@font/poppinssemibold"
+        android:textSize="17dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/GKS_text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GKS_text2"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Kami telah mengirimkan Kode OTP ke alamat Email anda"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="14dp"
+        android:textColor="@color/grey"/>
+
+    <LinearLayout
+        android:id="@+id/GKS_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GKS_text3"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        android:padding="30dp">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/LKS_kodeotplayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconTint="@color/grey"
+            app:startIconDrawable="@drawable/ic_kodeotp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/LKS_kodeotpedit"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Kode OTP"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/GKS_text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GKS_layout2"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Masukkan Kata Sandi Baru Anda"
+        android:fontFamily="@font/poppinsmedium"
+        android:textSize="14dp"
+        android:textColor="@color/grey"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/GKS_text4"
+        android:padding="30dp"
+        android:id="@+id/GKS_ly_1">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/GKS_katasandilayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_lock"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/GKS_katasandiedit"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Kata Sandi Baru"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/GKS_konfirmasilayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_lock_open"
+            app:startIconTint="@color/grey">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/GKS_konfirmasiedit"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Konfirmasi Kata Sandi Baru"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Konfirmasi"
+        android:layout_below="@+id/GKS_ly_1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_shape"
+        android:width="300dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppinssemibold"
+        android:id="@+id/GKS_btn_1" />
+
+</RelativeLayout>

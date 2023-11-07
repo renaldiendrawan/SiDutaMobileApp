@@ -76,7 +76,9 @@
             android:fontFamily="@font/poppinssemibold"
             android:textSize="15sp"
             android:textColor="@color/grey"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="30dp"
+            android:clickable="true"
+            android:onClick="onPGText5Click" />
         <ImageButton
             android:id="@+id/PG_actionlogout"
             android:layout_width="wrap_content"

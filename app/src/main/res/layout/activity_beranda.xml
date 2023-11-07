@@ -27,6 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
         android:background="@color/white"
-        app:itemIconSize="50dp"/>
+        app:itemIconSize="50dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "259957768992",
+    "project_id": "sidutamobile",
+    "storage_bucket": "sidutamobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259957768992:android:dde0d78cd2c0f9c691cd45",
+        "android_client_info": {
+          "package_name": "com.example.aplikasieduta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1ZpaIiphFqZNy79K-tu1NQgMllLxLE90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
