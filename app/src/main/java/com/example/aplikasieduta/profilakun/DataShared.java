@@ -62,8 +62,15 @@ public class DataShared {
         ACC_TANGGAL_LAHIR,
         ACC_ALAMAT,
         ACC_EMAIL,
-        ACC_IMAGE
-
+        ACC_IMAGE,
+        BERANDA_ID,
+        ACC_ID_ANAK,
+        ACC_NAMA_ANAK,
+        ACC_TANGGAL_LAHIR_ANAK,
+        ACC_JENIS_KELAMIN,
+        ACC_BB_LAHIR,
+        ACC_TB_LAHIR,
+        ACC_NAMA_AYAH,
+        ACC_FOTO_ANAK_
     }
-
 }

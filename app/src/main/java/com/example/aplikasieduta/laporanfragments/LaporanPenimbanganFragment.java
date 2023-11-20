@@ -16,6 +16,7 @@ import com.example.aplikasieduta.R;
 import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganAdapter;
 import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganModel;
 import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganResponse;
+import com.example.aplikasieduta.profilakun.DataShared;
 import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,14 +29,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LaporanPenimbanganFragment extends Fragment {
-    public static final String URLSELECT = "http://172.17.202.22/SiDutaMobile/selectlaporanpenimbangan.php";
+    public static final String URLSELECT = "http://172.16.106.151/SiDutaMobile/selectlaporanpenimbangan.php";
 
     RecyclerView recyclerView;
     List<LaporanPenimbanganModel> itemList = new ArrayList<LaporanPenimbanganModel>();
     LaporanPenimbanganAdapter laporanPenimbanganAdapter;
-    String nama_anak, umur, tanggal_penimbangan, berat_badan, tinggi_badan;
+    String nama_anak, umur, tgl_penimbangan, berat_badan, tinggi_badan;
     FloatingActionButton fab;
     View view;
+
+    private DataShared dataShared;
 
     public LaporanPenimbanganFragment() {
         // Required empty public constructor
@@ -44,9 +47,11 @@ public class LaporanPenimbanganFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_laporan_penimbangan, container, false);
+        dataShared = new DataShared(requireContext());
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<LaporanPenimbanganResponse> call = apiInterface.ambillaporanpenimbangan();
+        Call<LaporanPenimbanganResponse> call = apiInterface.ambillaporanpenimbangan(dataShared.getData(DataShared.KEY.ACC_ID_IBU));
+
 
         call.enqueue(new Callback<LaporanPenimbanganResponse>() {
             @Override

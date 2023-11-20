@@ -5,9 +5,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "http://192.168.0.116/SiDutaMobile/";
+    private static final String BASE_URL = "http://172.17.202.67/SiDuta/SiDutaMobile/";
 
-    public static final String PHOTO_URL = BASE_URL + "upload/";
+    public static final String PHOTO_URL = BASE_URL + "upload/",
+            PHOTO_URL_ANAK = BASE_URL + "uploadfotobalita/",
+            PHOTO_URL_ARTIKEL = BASE_URL + "forms/berkas/";
 
     private static Retrofit retrofit;
 

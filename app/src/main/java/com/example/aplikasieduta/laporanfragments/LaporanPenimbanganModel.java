@@ -1,12 +1,12 @@
 package com.example.aplikasieduta.laporanfragments;
 
 public class LaporanPenimbanganModel {
-    private String nama_anak, umur, tanggal_penimbangan, berat_badan, tinggi_badan;
+    private String nama_anak, umur, tgl_penimbangan, berat_badan, tinggi_badan;
 
     public LaporanPenimbanganModel(String nama_anak, String umur, String tanggal_penimbangan, String berat_badan, String tinggi_badan) {
         this.nama_anak = nama_anak;
-        this.umur = umur;
-        this.tanggal_penimbangan = tanggal_penimbangan;
+//        this.umur = umur;
+        this.tgl_penimbangan = tanggal_penimbangan;
         this.berat_badan = berat_badan;
         this.tinggi_badan = tinggi_badan;
     }
@@ -19,20 +19,20 @@ public class LaporanPenimbanganModel {
         this.nama_anak = nama_anak;
     }
 
-    public String getUmur() {
-        return umur;
+//    public String getUmur() {
+//        return umur;
+//    }
+//
+//    public void setUmur(String umur) {
+//        this.umur = umur;
+//    }
+
+    public String getTgl_penimbangan() {
+        return tgl_penimbangan;
     }
 
-    public void setUmur(String umur) {
-        this.umur = umur;
-    }
-
-    public String getTanggal_penimbangan() {
-        return tanggal_penimbangan;
-    }
-
-    public void setTanggal_penimbangan(String tanggal_penimbangan) {
-        this.tanggal_penimbangan = tanggal_penimbangan;
+    public void setTgl_penimbangan(String tgl_penimbangan) {
+        this.tgl_penimbangan = tgl_penimbangan;
     }
 
     public String getBerat_badan() {

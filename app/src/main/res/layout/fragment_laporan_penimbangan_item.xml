@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="165dp"
+        android:layout_height="140dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginVertical="5dp"
@@ -28,23 +28,23 @@
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
                 android:textSize="10sp"/>
-            <TextView
-                android:id="@+id/LP_textumur"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/LP_textnama"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_umur"
-                android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/LP_textumur"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/LP_textnama"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:drawableStart="@drawable/ic_umur"-->
+<!--                android:fontFamily="@font/poppinsregular"-->
+<!--                android:textColor="@color/primaryColor"-->
+<!--                android:textSize="10sp"/>-->
             <TextView
                 android:id="@+id/LP_texttanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/LP_textumur"
+                android:layout_below="@id/LP_textnama"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:gravity="center_vertical"
@@ -74,7 +74,7 @@
                 android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_tinggibadan"
                 android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/grey"
+                android:textColor="@color/primaryColor"
                 android:textSize="10sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

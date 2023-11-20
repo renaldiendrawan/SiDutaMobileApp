@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -138,7 +139,7 @@ public class GantiKataSandiActivity extends AppCompatActivity {
         Intent intent = null;
         // String notelp = intent.getStringExtra("notelp");
 
-        EditText password =findViewById(R.id.GKS_katasandiedit),
+        EditText password = findViewById(R.id.GKS_katasandiedit),
         kode_otp = findViewById(R.id.LKS_kodeotpedit);
 
         Button konfirmasi = findViewById(R.id.GKS_btn_1);
@@ -163,10 +164,10 @@ public class GantiKataSandiActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Lupa_katasandi> call, Throwable t) {
                 Toast.makeText(GantiKataSandiActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("error", t.getMessage());
             }
         });
 
         });
-
     }
 }

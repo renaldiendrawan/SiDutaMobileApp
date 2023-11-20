@@ -3,4 +3,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select">Select Item</string>
+
+    <string name="jenis_kelamin">jenis_kelamin</string>
+    <string-array name="jenis_kelamin_array">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
+    <string name="artikel_1">Kesehatan Balita</string>
+    <string name="artikel_2">Benarkah Terlalu Banyak Makan Menjadi Pengaruh Pertumbuhan Bayi</string>
+    <string name="artikel_3">Ini 6 Ide Permainan Sensory Play dan Manfaatnya untuk balita</string>
+
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataBalitaActivity">
+    tools:context=".databalita.DataBalitaActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -78,22 +78,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="57dp"
-                    android:background="@drawable/button_shape"
-                    android:hint="NIK Anak"
-                    android:textColorHint="@color/grey"
-                    android:paddingLeft="10dp"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:textSize="15sp"
-                    android:id="@+id/DB_edt_nikanak" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
                 <com.google.android.material.textfield.TextInputEditText
@@ -129,9 +113,11 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
+                <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    style="@style/Widget.AppCompat.DropDownItem.Spinner"
                     android:background="@drawable/button_shape"
                     android:hint="Jenis Kelamin Anak"
                     android:textColorHint="@color/grey"
@@ -139,7 +125,7 @@
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/poppinsmedium"
                     android:textSize="15sp"
-                    android:id="@+id/DB_edt_jeniskelaminanak" />
+                    android:id="@+id/DB_edt_jeniskelaminanak"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -195,25 +181,6 @@
                     android:paddingLeft="10dp"
                     android:backgroundTint="@color/white"
                     android:id="@+id/DB_edt_tinggibadanlahir" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/DB_edt_linkarkepalalahir"
-                    android:layout_width="match_parent"
-                    android:layout_height="57dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/button_shape"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/poppinsmedium"
-                    android:hint="Lingkar Kepala saat lahir (cm)"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="@color/grey"
-                    android:textSize="15dp"
-                    tools:ignore="TextSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -285,7 +252,7 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:fontFamily="@font/poppinssemibold"
-            android:id="@+id/DB_btn_2" />
+            android:id="@+id/DB_btn_2"/>
 
     </RelativeLayout>
 </ScrollView>

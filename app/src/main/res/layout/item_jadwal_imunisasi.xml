@@ -27,7 +27,7 @@
                 android:drawableStart="@drawable/ic_date"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/JI_textjam"
                 android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
                 android:drawableStart="@drawable/ic_time"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/JI_texttempat"
                 android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                 android:drawableStart="@drawable/ic_location"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/JI_textvaksin"
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                 android:drawableStart="@drawable/ic_vaccine"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/JI_textketerangan"
                 android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                 android:fontFamily="@font/poppinsregular"
                 android:text="Jadwal Imunisasi di Kelurahan Kauman, diharapkan kepada Ibu yang mempunyai balita untuk datang di lokasi Posyandu"
                 android:textColor="@color/grey"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

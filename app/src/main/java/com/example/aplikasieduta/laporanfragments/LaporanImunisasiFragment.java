@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.profilakun.DataShared;
 import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LaporanImunisasiFragment extends Fragment {
-    public static final String URLSELECT = "http://172.17.202.22/SiDutaMobile/selectjadwalimunisasi.php";
+    public static final String URLSELECT = "http://172.16.106.151/SiDutaMobile/selectjadwalimunisasi.php";
 
     RecyclerView recyclerView;
     List<LaporanImunisasiModel> itemList = new ArrayList<LaporanImunisasiModel>();
@@ -33,6 +34,7 @@ public class LaporanImunisasiFragment extends Fragment {
     String nama_anak, umur, tanggal_imunisasi, jenis_imunisasi;
     FloatingActionButton fab;
     View view;
+    private DataShared dataShared;
 
     public LaporanImunisasiFragment() {
         // Required empty public constructor
@@ -42,8 +44,9 @@ public class LaporanImunisasiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_laporan_imunisasi, container, false);
 
+        dataShared = new DataShared(requireContext());
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<LaporanImunisasiResponse> call = apiInterface.ambillaporanimunisasi();
+        Call<LaporanImunisasiResponse> call = apiInterface.ambillaporanimunisasi(dataShared.getData(DataShared.KEY.ACC_ID_IBU));
 
         call.enqueue(new Callback<LaporanImunisasiResponse>() {
             @Override
@@ -56,6 +59,7 @@ public class LaporanImunisasiFragment extends Fragment {
                         if (list !=null && !list.isEmpty()) {
                             LaporanImunisasiModel model = response.body().getData().get(0);
                             itemList.addAll(list);
+                            itemList = list;
                             setRecyclerView();
                         }
                     } else if (respon.isSuccess() == false) {
@@ -79,7 +83,7 @@ public class LaporanImunisasiFragment extends Fragment {
 
     private void setRecyclerView(){
         recyclerView = view.findViewById(R.id.recyclerview_laporanimunisasi);
-        LaporanImunisasiAdapter laporanImunisasiAdapter1 = new LaporanImunisasiAdapter(itemList, this);
+        laporanImunisasiAdapter = new LaporanImunisasiAdapter(itemList, this);
         Context context = requireContext();
 // Initialize the LinearLayoutManager with the Context
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);

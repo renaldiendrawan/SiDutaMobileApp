@@ -16,10 +16,9 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 public class AkunActivity extends AppCompatActivity {
     TextView A_txt_4, A_txt_5;
-
     private DataShared dataShared;
-
     private ShapeableImageView imageView;
+    private TextView textView1, textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +26,8 @@ public class AkunActivity extends AppCompatActivity {
         setContentView(R.layout.activity_akun);
 
         imageView = findViewById(R.id.A_btn_1);
+        textView1 = findViewById(R.id.A_txt_2);
+        textView2 = findViewById(R.id.A_txt_3);
 
         dataShared = new DataShared(this);
 
@@ -34,6 +35,9 @@ public class AkunActivity extends AppCompatActivity {
                 .load(ApiClient.PHOTO_URL + dataShared.getData(DataShared.KEY.ACC_IMAGE))
                 .placeholder(R.drawable.ic_person1)
                 .into(imageView);
+
+        textView1.setText(dataShared.getData(DataShared.KEY.ACC_NAMA_IBU));
+        textView2.setText(dataShared.getData(DataShared.KEY.ACC_NIK_IBU));
 
         // Mendapatkan referensi ke tombol Back
         ImageButton backButton = findViewById(R.id.A_img_1);

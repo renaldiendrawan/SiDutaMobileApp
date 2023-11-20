@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextInputLayout textInputLayout;
     TextInputEditText textInputEditText;
@@ -39,9 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView L_txt_daftar;
     ApiInterface apiInterface;
     SessionManager sessionManager;
-
     private DataShared dataShared;
-
     SharedPreferences sharedPreferences;
     private final String TAG = "LoginActivity";
 
@@ -122,9 +121,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.L_btn_1:
-                nik = L_edt_nik.getText().toString();
-                katasandi = L_inputkatasandi.getText().toString();
-                login(nik, katasandi);
+                if (TextUtils.isEmpty(L_edt_nik.getText().toString())) {
+                    Toast.makeText(this, "NIK Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(L_inputkatasandi.getText().toString())) {
+                    Toast.makeText(this, "Kata Sandi belum diisi", Toast.LENGTH_SHORT).show();
+                } else {
+                    nik = L_edt_nik.getText().toString();
+                    katasandi = L_inputkatasandi.getText().toString();
+                    login(nik, katasandi);
+                }
                 break;
             case R.id.L_txt_daftar:
                 Intent intent = new Intent(this, RegisterActivity.class);
@@ -140,7 +145,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginCall.enqueue(new Callback<Login>() {
             @Override
             public void onResponse(Call<Login> call, Response<Login> response) {
-                if(response.body() != null && response.isSuccessful() && response.body().isStatus()) {
+                if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
 
                     // Ini untuk menyimpan sesi
                     sessionManager = new SessionManager(LoginActivity.this);
@@ -151,7 +156,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("nik_ibu", loginData.getNikIbu());
                     editor.apply();
-
 
                     dataShared.setData(DataShared.KEY.ACC_ID_IBU, loginData.getIdIbu());
                     dataShared.setData(DataShared.KEY.ACC_NIK_IBU, loginData.getNikIbu());

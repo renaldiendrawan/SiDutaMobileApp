@@ -1,5 +1,8 @@
 package com.example.aplikasieduta.retrofit;
 
+import com.example.aplikasieduta.artikel.ArtikelResponse;
+import com.example.aplikasieduta.databalita.DataBalitaResponse;
+import com.example.aplikasieduta.databalita.DataBalitaUpdateRespon;
 import com.example.aplikasieduta.laporanfragments.LaporanImunisasiResponse;
 import com.example.aplikasieduta.laporanfragments.LaporanPenimbanganResponse;
 import com.example.aplikasieduta.profilakun.ProfilAkunResponse;
@@ -14,7 +17,9 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -47,7 +52,7 @@ public interface ApiInterface {
     Call<Lupa_katasandi> lupaKatasandi_ganti(
             @Field("email") String email,
             @Field("kode_otp") String kode_otp,
-            @Field("password") String kata_sandi
+            @Field("kata_sandi") String kata_sandi
     );
 
     @GET("selectjadwalpenimbangan.php")
@@ -57,31 +62,31 @@ public interface ApiInterface {
     Call<JadwalImunisasiResponse> ambiljadwalimunisasi();
 
     @GET("selectlaporanpenimbangan.php")
-    Call<LaporanPenimbanganResponse> ambillaporanpenimbangan();
+    Call<LaporanPenimbanganResponse> ambillaporanpenimbangan(
+            @Query("id_ibu") String nama_anak
+    );
 
-    @FormUrlEncoded
-    @POST("selectlaporanimunisasi.php")
+    @GET("selectlaporanimunisasi.php")
     Call<LaporanImunisasiResponse> ambillaporanimunisasi(
-//            @Field("nik_ibu") String nik_ibu
+            @Query("id_ibu") String nama_anak
     );
 
     @GET("databalita.php")
-    Call<BerandaFragmentResponse> ambildatabalita();
+    Call<DataBalitaResponse> ambildatabalita(
+            @Field("nama_anak") String namaAnak,
+            @Field("tanggal_lahir_anak") String tanggalLahir,
+            @Field("jenis_kelamin") String jenisKel
+    );
 
+    @GET("listbalita.php")
+    Call<DataBalitaResponse> listData(
+            @Query("id_ibu") String  idIbu
+    );
 
-
-
-
-//    @FormUrlEncoded
-//    @POST("profilakun.php")
-//    Call<ProfilAkunResponse> ambildataprofilakun (
-//            @Field("nama_ibu") String nama_ibu,
-//            @Field("nik_ibu") String nik_ibu,
-//            @Field("tanggal_lahir") String tanggal_lahir,
-//            @Field("alamat") String alamat,
-//            @Field("email") String email,
-//            @Field("imagepath") String imagepath
-//    );
+    @GET("databalita.php")
+    Call<DataBalitaResponse> getDataBalita(
+            @Query("nama_anak") String nama
+    );
 
     @FormUrlEncoded
     @POST("ambilakun.php")
@@ -107,4 +112,36 @@ public interface ApiInterface {
             @Field("imagepath") String image
     );
 
+    @FormUrlEncoded
+    @POST("fotobalita.php")
+    Call<DataBalitaResponse> updatePhotoBalita(
+            @Field("nama_anak") String namaAnak,
+            @Field("imagepath") String image
+    );
+
+    @FormUrlEncoded
+    @POST("databalita.php")
+    Call<DataBalitaUpdateRespon> editDataBalita(
+            @Field("id_anak") String idAnak,
+            @Field("nama_anak") String nama_anak,
+            @Field("tanggal_lahir_anak") String tanggal_lahir_anak,
+            @Field("jenis_kelamin") String jenis_kelamin,
+            @Field("bb_lahir") String bb_lahir,
+            @Field("tb_lahir") String tb_lahir,
+            @Field("nama_ayah") String nama_ayah,
+            @Field("nama_ibu") String nama_ibu
+    );
+
+    @GET("get_fotobalita.php")
+    Call<DataBalitaResponse> getPhoto(
+      @Query("nama_anak") String namaAnak
+    );
+
+    @GET("artikel.php")
+    Call<ArtikelResponse> artikel();
+
+    @GET("detail_artikel.php")
+    Call<ArtikelResponse> detailartikel(
+            @Query("judul_artikel") String judulArtikel
+    );
 }

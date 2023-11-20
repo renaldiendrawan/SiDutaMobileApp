@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="135dp"
+        android:layout_height="110dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginVertical="5dp"
@@ -27,31 +27,31 @@
                 android:drawableStart="@drawable/ic_balita"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
+                android:textSize="12sp"/>
+<!--            <TextView-->
+<!--                android:id="@+id/LI_textumur"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/LI_textnama"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:drawableStart="@drawable/ic_umur"-->
+<!--                android:fontFamily="@font/poppinsregular"-->
+<!--                android:textColor="@color/primaryColor"-->
+<!--                android:textSize="10sp" />-->
             <TextView
-                android:id="@+id/LI_textumur"
+                android:id="@+id/LI_texttanggal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/LI_textnama"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_umur"
-                android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
-            <TextView
-                android:id="@+id/LI_texttanggal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/LI_textumur"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
                 android:drawableStart="@drawable/ic_date"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/LI_textjenis"
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                 android:drawableStart="@drawable/ic_vaccine"
                 android:fontFamily="@font/poppinsregular"
                 android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
+                android:textSize="12sp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

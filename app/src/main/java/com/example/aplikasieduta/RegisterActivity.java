@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -169,13 +170,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.R_btn_1:
-                nama = R_edt_namaorangtua.getText().toString();
-                nik = R_edt_nikorangtua.getText().toString();
-                tanggallahir = R_edt_tanggallahir.getText().toString();
-                alamat = R_edt_alamat.getText().toString();
-                email = R_edt_email.getText().toString();
-                katasandi = R_inputkatasandi.getText().toString();
-                register(nama, nik, tanggallahir, alamat, email, katasandi);
+                if (TextUtils.isEmpty(R_edt_namaorangtua.getText().toString())) {
+                    Toast.makeText(this, "Nama Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(R_edt_nikorangtua.getText().toString())){
+                    Toast.makeText(this, "NIK Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(R_edt_tanggallahir.getText().toString())){
+                    Toast.makeText(this, "Tanggal Lahir Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(R_edt_alamat.getText().toString())){
+                    Toast.makeText(this, "Alamat belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(R_edt_email.getText().toString())){
+                    Toast.makeText(this, "Email belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(R_inputkatasandi.getText().toString())){
+                    Toast.makeText(this, "Kata Sandi belum diisi", Toast.LENGTH_SHORT).show();
+                } else {
+                    nama = R_edt_namaorangtua.getText().toString();
+                    nik = R_edt_nikorangtua.getText().toString();
+                    tanggallahir = R_edt_tanggallahir.getText().toString();
+                    alamat = R_edt_alamat.getText().toString();
+                    email = R_edt_email.getText().toString();
+                    katasandi = R_inputkatasandi.getText().toString();
+                    register(nama, nik, tanggallahir, alamat, email, katasandi);
+                }
+                
                 break;
             case R.id.R_txt_masuk:
                 Intent intent = new Intent(this, LoginActivity.class);

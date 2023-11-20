@@ -25,7 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class JadwalImunisasiFragment extends Fragment {
-    public static final String URLSELECT = "http://172.17.202.22/SiDutaMobile/selectjadwalimunisasi.php";
+    public static final String URLSELECT = "http://172.16.106.151/SiDutaMobile/selectjadwalimunisasi.php";
 
     RecyclerView recyclerView;
     List<JadwalImunisasiModel> itemList = new ArrayList<JadwalImunisasiModel>();

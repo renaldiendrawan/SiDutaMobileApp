@@ -79,6 +79,7 @@
                 android:paddingLeft="10dp"
                 android:textColorHint="@color/grey"
                 android:textSize="15dp"
+                android:inputType="number"
                 tools:ignore="TextSizeCheck"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

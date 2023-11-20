@@ -1,5 +1,6 @@
 package com.example.aplikasieduta.profilakun;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.aplikasieduta.AkunActivity;
 import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.RegisterActivity;
 import com.example.aplikasieduta.jadwalfragments.JadwalImunisasiModel;
 import com.example.aplikasieduta.jadwalfragments.JadwalImunisasiResponse;
 import com.example.aplikasieduta.retrofit.ApiClient;
@@ -37,6 +40,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,17 +54,42 @@ public class ProfilAkunActivity extends AppCompatActivity {
     Bitmap bitmap;
     ProgressDialog progressDialog;
     Uri selectedImageUri;
-    EditText nama_ibu, nik_ibu, tanggal_lahir, alamat, email;
+    EditText nama_ibu, nik_ibu, tanggal_lahir, alamat, email, PF_edt_tanggallahir;
     private ShapeableImageView imagepath;
     private static final int PICK_IMAGE = 1;
     private Uri imageUri;
-
     private DataShared dataShared;
+    private int tahun, bulan, tanggal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_akun);
+
+        PF_edt_tanggallahir = findViewById(R.id.PF_edt_tanggallahir);
+        PF_edt_tanggallahir.setFocusableInTouchMode(false);
+        PF_edt_tanggallahir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                tahun = calendar.get(Calendar.YEAR);
+                bulan = calendar.get(Calendar.MONTH);
+                tanggal = calendar.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog;
+                dialog = new DatePickerDialog(ProfilAkunActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tahun = year;
+                        bulan = month;
+                        tanggal = dayOfMonth;
+
+                        PF_edt_tanggallahir.setText(tahun + "-" + bulan + "-" + tanggal);
+                    }
+                }, tahun, bulan, tanggal);
+                dialog.show();
+            }
+        });
 
         dataShared = new DataShared(this);
 
@@ -78,7 +107,6 @@ public class ProfilAkunActivity extends AppCompatActivity {
         imageView = findViewById(R.id.PF_btn_1);
         Button button = findViewById(R.id.PF_btn_2);
         PF_floatingActionButton2 = findViewById(R.id.PF_floatingActionButton2);
-
 
         Glide.with(ProfilAkunActivity.this)
                 .load(ApiClient.PHOTO_URL + dataShared.getData(DataShared.KEY.ACC_IMAGE))
@@ -208,7 +236,7 @@ public class ProfilAkunActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(ProfilAkunActivity.this, "ON CLICK", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ProfilAkunActivity.this, "ON CLICK", Toast.LENGTH_SHORT).show();
 
                 ApiClient.getClient().create(ApiInterface.class)
                         .editAkun(
@@ -218,12 +246,20 @@ public class ProfilAkunActivity extends AppCompatActivity {
                                 tanggal_lahir.getText().toString(),
                                 alamat.getText().toString(),
                                 email.getText().toString()
+
                         ).enqueue(new Callback<ProfilAkunResponse>() {
                             @Override
                             public void onResponse(Call<ProfilAkunResponse> call, Response<ProfilAkunResponse> response) {
 
                                 if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
                                     Toast.makeText(ProfilAkunActivity.this, "Data berhasil diedit", Toast.LENGTH_SHORT).show();
+
+                                    dataShared.setData(DataShared.KEY.ACC_NIK_IBU, nik_ibu.getText().toString());
+                                    dataShared.setData(DataShared.KEY.ACC_NAMA_IBU, nama_ibu.getText().toString());
+                                    dataShared.setData(DataShared.KEY.ACC_ALAMAT, alamat.getText().toString());
+                                    dataShared.setData(DataShared.KEY.ACC_TANGGAL_LAHIR, tanggal_lahir.getText().toString());
+                                    dataShared.setData(DataShared.KEY.ACC_EMAIL, email.getText().toString());
+
                                 }else {
                                     Toast.makeText(ProfilAkunActivity.this, "Data gagal diedit", Toast.LENGTH_SHORT).show();
                                 }
@@ -234,12 +270,6 @@ public class ProfilAkunActivity extends AppCompatActivity {
                                 Toast.makeText(ProfilAkunActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
-
-//                if (selectedImageUri != null) {
-//                    new UploadImageTask().execute(selectedImageUri);
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "Select the image first", Toast.LENGTH_SHORT).show();
-//                }
             }
         });
 
@@ -250,21 +280,11 @@ public class ProfilAkunActivity extends AppCompatActivity {
         protected Boolean doInBackground(Uri... uris) {
             Uri selectedImageUri = uris[0];
             try {
-                // Perform the image upload operation here using selectedImageUri
-                // Make sure to handle the network requests and any potential exceptions
-                // Return true if the upload is successful, or false otherwise
-                // You can use libraries like Retrofit, OkHttp, or HttpURLConnection for the upload operation
-                // Don't forget to handle background threads appropriately
 
-                // Example: Replace this with your actual image upload logic
-                // HttpURLConnection and related code
-                URL url = new URL("http://172.17.202.22/SiDutaMobile/profilakun.php");
+                URL url = new URL("http://172.16.106.49/SiDuta/SiDutaMobile/profilakun.php");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
 
-                // Continue with the connection setup and data transfer...
-
-                // Simulate a successful upload for this example
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();

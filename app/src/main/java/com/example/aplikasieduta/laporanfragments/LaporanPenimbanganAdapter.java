@@ -36,8 +36,8 @@ public class LaporanPenimbanganAdapter extends RecyclerView.Adapter<com.example.
     public void onBindViewHolder(@NonNull com.example.aplikasieduta.laporanfragments.LaporanPenimbanganAdapter.RecycleViewHolder holder, int position) {
         LaporanPenimbanganModel laporan = items.get(position);
         holder.nama_anak.setText(items.get(position).getNama_anak());
-        holder.umur.setText(items.get(position).getUmur());
-        holder.tanggal_penimbangan.setText(items.get(position).getTanggal_penimbangan());
+//        holder.umur.setText(items.get(position).getUmur());
+        holder.tgl_penimbangan.setText(items.get(position).getTgl_penimbangan());
         holder.berat_badan.setText(items.get(position).getBerat_badan());
         holder.tinggi_badan.setText(items.get(position).getTinggi_badan());
     }
@@ -48,13 +48,13 @@ public class LaporanPenimbanganAdapter extends RecyclerView.Adapter<com.example.
     }
 
     public class RecycleViewHolder extends RecyclerView.ViewHolder {
-        private TextView nama_anak, umur, tanggal_penimbangan, berat_badan, tinggi_badan;
+        private TextView nama_anak, umur, tgl_penimbangan, berat_badan, tinggi_badan;
 
         public RecycleViewHolder(View view){
             super(view);
             nama_anak = view.findViewById(R.id.LP_textnama);
-            umur = view.findViewById(R.id.LP_textumur);
-            tanggal_penimbangan = view.findViewById(R.id.LP_texttanggal);
+//            umur = view.findViewById(R.id.LP_textumur);
+            tgl_penimbangan = view.findViewById(R.id.LP_texttanggal);
             berat_badan = view.findViewById(R.id.LP_textberat);
             tinggi_badan = view.findViewById(R.id.LP_texttinggi);
 

@@ -11,22 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.databalita.DataBalitaModel;
+import com.example.aplikasieduta.databalita.DataBalitaResponse;
+import com.example.aplikasieduta.profilakun.DataShared;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragmentAdapter.ViewHolder> {
 
-    private static View.OnClickListener clickListener;
-    private List<BerandaFragmentModel> databalitaList;
+    private Context context;
+    private OnClickListener clickListener;
+    private ArrayList<DataBalitaModel> databalitaList;
     SharedPreferences sharedPreferences;
 
-    public static void setClickListener(View.OnClickListener listener){
-        clickListener = listener;
-    }
-
-    public BerandaFragmentAdapter(List<BerandaFragmentModel> databalitaList, BerandaFragment context){
+    public BerandaFragmentAdapter(ArrayList<DataBalitaModel> databalitaList, Context context, OnClickListener listener){
+        this.context = context;
     // this.sharedPreferences = context.getActivity().getSharedPreferences("prefbalita", Context.MODE_PRIVATE);
         this.databalitaList = databalitaList;
+        clickListener = listener;
     }
 
     @NonNull
@@ -38,26 +41,32 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BerandaFragmentModel databalita = databalitaList.get(position);
+        DataBalitaModel databalita = databalitaList.get(position);
         holder.textNama.setText(databalita.getNama_anak());
-        holder.textUmur.setText(databalita.getUsia());
+        holder.textTanggallahiranak.setText(databalita.getTanggal_lahir_anak());
         holder.textJenisKelamin.setText(databalita.getJenis_kelamin());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (clickListener != null){
-                    int position = holder.getPosition();
-                    if (position != RecyclerView.NO_POSITION){
-                        BerandaFragmentModel clickeditem = databalitaList.get(position);
 
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("namabalita", clickeditem.getNama_anak());
-                        editor.apply();
-                        clickListener.onClick(v);
+        if (holder.getAdapterPosition() != RecyclerView.NO_POSITION){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (clickListener != null){
+                        int position = holder.getPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            DataShared dataShared = new DataShared(context);
+                            dataShared.setData(DataShared.KEY.BERANDA_ID, databalitaList.get(position).getNama_anak());
+                            clickListener.onClick(position);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+    }
+
+    public interface OnClickListener{
+
+        void onClick(int position);
+
     }
 
     @Override
@@ -66,12 +75,12 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textNama, textUmur, textJenisKelamin;
+        TextView textNama, textTanggallahiranak, textJenisKelamin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textNama = itemView.findViewById(R.id.DB_namabalita);
-            textUmur = itemView.findViewById(R.id.DB_umur);
+            textTanggallahiranak = itemView.findViewById(R.id.DB_tanggallahir);
             textJenisKelamin = itemView.findViewById(R.id.DB_jeniskelamin);
         }
     }

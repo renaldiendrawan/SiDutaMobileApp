@@ -45,7 +45,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Image Slider
-    implementation 'com.github.AtikulSoftware:smart-slider:1.0'
+//    implementation 'com.github.AtikulSoftware:smart-slider:1.0'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
