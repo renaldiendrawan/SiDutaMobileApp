@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Theme.AplikasiEDuta" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorSecondary">@color/secondaryColor</item>
@@ -12,8 +13,7 @@
         <item name="android:statusBarColor">@color/black</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
-    </style>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light"></style>
 
     <style name="circular">
         <item name="cornerSize">50%</item>

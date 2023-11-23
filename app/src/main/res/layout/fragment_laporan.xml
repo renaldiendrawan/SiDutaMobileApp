@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BerandaActivity">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/LP_txt_1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/laporan_linear1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="Laporan"
-        android:fontFamily="@font/poppinssemibold"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/LP_txt_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Laporan"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp">
+
+            <Spinner
+                android:id="@+id/laporan_pilihananak"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_shape"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:hint="Pilih Anak"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/grey"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/LP_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/LP_txt_1"
+        android:layout_below="@id/laporan_linear1"
         android:layout_marginTop="10dp"
-        app:tabTextColor="@color/grey"
+        app:tabIndicatorColor="@color/primaryColor"
         app:tabSelectedTextColor="@color/primaryColor"
-        app:tabIndicatorColor="@color/primaryColor">
+        app:tabTextColor="@color/grey">
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Imunisasi"/>
+            android:text="Imunisasi" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Penimbangan"/>
+            android:text="Penimbangan" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/LP_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/LP_tablayout"/>
+        android:layout_below="@+id/LP_tablayout" />
 
 </RelativeLayout>

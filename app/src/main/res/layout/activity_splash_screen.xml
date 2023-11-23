@@ -7,49 +7,49 @@
     tools:context=".SplashScreen">
 
     <ImageView
+        android:id="@+id/SS_img_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/logoaplikasi"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:id="@+id/SS_img_1"/>
+        android:src="@drawable/logoaplikasi" />
 
     <TextView
+        android:id="@+id/SS_txt_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/SS_img_1"
-        android:text="SiDuta"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppinsbold"
-        android:textSize="30dp"
+        android:text="SiDuta"
         android:textColor="@color/secondaryColor"
-        android:id="@+id/SS_txt_1" />
+        android:textSize="30dp" />
 
     <TextView
+        android:id="@+id/SS_txt_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/SS_txt_1"
-        android:text="Selamat Datang di SiDuta"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/poppinsbold"
-        android:textSize="22sp"
+        android:text="Selamat Datang di SiDuta"
         android:textColor="@color/black"
-        android:id="@+id/SS_txt_2" />
+        android:textSize="22sp" />
 
     <TextView
+        android:id="@+id/SS_txt_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/SS_txt_2"
-        android:text="Menjaga Generasi Sehat Untuk Bangun Masa Depan"
-        android:padding="20dp"
-        android:gravity="center"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/poppinsmedium"
-        android:textSize="17sp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="Menjaga Generasi Sehat Untuk Bangun Masa Depan"
         android:textColor="@color/black"
-        android:id="@+id/SS_txt_3"/>
+        android:textSize="17sp" />
 
     <ImageView
         android:id="@+id/SS_img_2"
@@ -57,6 +57,6 @@
         android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/gambarsplashscreen"/>
+        android:src="@drawable/gambarsplashscreen" />
 
 </RelativeLayout>

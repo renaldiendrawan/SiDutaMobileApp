@@ -1,12 +1,12 @@
 package com.example.aplikasieduta.retrofit;
 
+import com.example.aplikasieduta.pengaturanakun.PengaturanHapusAkunResponse;
 import com.example.aplikasieduta.artikel.ArtikelResponse;
 import com.example.aplikasieduta.databalita.DataBalitaResponse;
 import com.example.aplikasieduta.databalita.DataBalitaUpdateRespon;
 import com.example.aplikasieduta.laporanfragments.LaporanImunisasiResponse;
 import com.example.aplikasieduta.laporanfragments.LaporanPenimbanganResponse;
 import com.example.aplikasieduta.profilakun.ProfilAkunResponse;
-import com.example.aplikasieduta.beranda.BerandaFragmentResponse;
 import com.example.aplikasieduta.jadwalfragments.JadwalImunisasiResponse;
 import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganResponse;
 import com.example.aplikasieduta.model.LupaKataSandi.Lupa_katasandi;
@@ -14,6 +14,7 @@ import com.example.aplikasieduta.model.login.Login;
 import com.example.aplikasieduta.model.register.Register;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -26,8 +27,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("login.php")
     Call<Login> loginResponse(
-          @Field("nik_ibu") String nik_ibu,
-          @Field("kata_sandi") String kata_sandi
+            @Field("nik_ibu") String nik_ibu,
+            @Field("kata_sandi") String kata_sandi
     );
 
     @FormUrlEncoded
@@ -61,14 +62,16 @@ public interface ApiInterface {
     @GET("selectjadwalimunisasi.php")
     Call<JadwalImunisasiResponse> ambiljadwalimunisasi();
 
-    @GET("selectlaporanpenimbangan.php")
+    @FormUrlEncoded
+    @POST("selectlaporanpenimbangan.php")
     Call<LaporanPenimbanganResponse> ambillaporanpenimbangan(
-            @Query("id_ibu") String nama_anak
+            @Field("nik_ibu") String nama_anak
     );
 
-    @GET("selectlaporanimunisasi.php")
+    @FormUrlEncoded
+    @POST("selectlaporanimunisasi.php")
     Call<LaporanImunisasiResponse> ambillaporanimunisasi(
-            @Query("id_ibu") String nama_anak
+            @Field("nik_ibu") String nama_anak
     );
 
     @GET("databalita.php")
@@ -80,7 +83,7 @@ public interface ApiInterface {
 
     @GET("listbalita.php")
     Call<DataBalitaResponse> listData(
-            @Query("id_ibu") String  idIbu
+            @Query("nik_ibu") String idIbu
     );
 
     @GET("databalita.php")
@@ -97,7 +100,6 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("profilakun.php")
     Call<ProfilAkunResponse> editAkun(
-            @Field("id_ibu") String id,
             @Field("nik_ibu") String nik,
             @Field("nama_ibu") String nama,
             @Field("tanggal_lahir") String tanggal,
@@ -120,7 +122,7 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
-    @POST("databalita.php")
+    @POST("updatedatabalita.php")
     Call<DataBalitaUpdateRespon> editDataBalita(
             @Field("id_anak") String idAnak,
             @Field("nama_anak") String nama_anak,
@@ -129,12 +131,13 @@ public interface ApiInterface {
             @Field("bb_lahir") String bb_lahir,
             @Field("tb_lahir") String tb_lahir,
             @Field("nama_ayah") String nama_ayah,
-            @Field("nama_ibu") String nama_ibu
+            @Field("nama_ibu") String nama_ibu,
+            @Field("nik_ibu") String nik_ibu
     );
 
     @GET("get_fotobalita.php")
     Call<DataBalitaResponse> getPhoto(
-      @Query("nama_anak") String namaAnak
+            @Query("nama_anak") String namaAnak
     );
 
     @GET("artikel.php")
@@ -144,4 +147,11 @@ public interface ApiInterface {
     Call<ArtikelResponse> detailartikel(
             @Query("judul_artikel") String judulArtikel
     );
+
+    @FormUrlEncoded
+    @HTTP(method = "POST", path = "delete_account.php", hasBody = true)
+    Call<PengaturanHapusAkunResponse> deleteAccount(
+            @Field("nik_ibu") String nik_ibu
+    );
+
 }

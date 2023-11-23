@@ -32,7 +32,7 @@
             android:name=".databalita.DataBalitaActivity"
             android:exported="false" />
         <activity
-            android:name=".PengaturanAkunActivity"
+            android:name=".pengaturanakun.PengaturanAkunActivity"
             android:exported="false" />
         <activity
             android:name=".profilakun.ProfilAkunActivity"

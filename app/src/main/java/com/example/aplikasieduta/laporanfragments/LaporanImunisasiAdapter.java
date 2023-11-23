@@ -21,8 +21,6 @@ public class LaporanImunisasiAdapter extends RecyclerView.Adapter<LaporanImunisa
 
     List<LaporanImunisasiModel> items;
 
-//    public LaporanImunisasiAdapter(ArrayList<LaporanImunisasiModel> items){this.items = items;}
-
     public LaporanImunisasiAdapter(List<LaporanImunisasiModel> itemList, LaporanImunisasiFragment laporanImunisasiFragment) {
         this.items = itemList;
     }
@@ -38,7 +36,6 @@ public class LaporanImunisasiAdapter extends RecyclerView.Adapter<LaporanImunisa
     public void onBindViewHolder(@NonNull LaporanImunisasiAdapter.RecycleViewHolder holder, int position) {
         LaporanImunisasiModel laporan = items.get(position);
         holder.nama_anak.setText(items.get(position).getNama_anak());
-//        holder.umur.setText(items.get(position).getUmur());
         holder.tanggal_imunisasi.setText(items.get(position).getTanggal_imunisasi());
         holder.jenis_imunisasi.setText(items.get(position).getJenis_imunisasi());
     }
@@ -54,7 +51,6 @@ public class LaporanImunisasiAdapter extends RecyclerView.Adapter<LaporanImunisa
         public RecycleViewHolder(View view){
             super(view);
             nama_anak = view.findViewById(R.id.LI_textnama);
-//            umur = view.findViewById(R.id.LI_textumur);
             tanggal_imunisasi = view.findViewById(R.id.LI_texttanggal);
             jenis_imunisasi = view.findViewById(R.id.LI_textjenis);
         }

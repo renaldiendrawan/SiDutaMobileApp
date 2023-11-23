@@ -24,17 +24,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextInputLayout textInputLayout;
-    TextInputEditText textInputEditText, R_edt_namaorangtua, R_edt_nikorangtua, R_edt_tanggallahir, R_edt_alamat, R_edt_email, R_inputkatasandi;
+    TextInputLayout textInputLayoutNamaOrangTua, textInputLayoutKataSandi;
+    TextInputEditText R_edt_namaorangtua, R_edt_nikorangtua, R_edt_tanggallahir, R_edt_alamat, R_edt_email, R_inputkatasandi;
     Button R_btn_1;
     TextView R_txt_masuk;
     String nama, nik, tanggallahir, alamat, email, katasandi;
@@ -55,6 +53,31 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 // Ketika tombol Back diklik, kembali ke MainActivity
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        // Menyembunyikan atau Menampilkan Nama Orang Tua
+        textInputLayoutNamaOrangTua = findViewById(R.id.R_textinputlayoutnamaorangtua);
+        R_edt_namaorangtua = findViewById(R.id.R_edt_namaorangtua);
+        R_edt_namaorangtua.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                String namaOrangTuaInput = charSequence.toString().trim();
+                if (!isValidName(namaOrangTuaInput)) {
+                    textInputLayoutNamaOrangTua.setError("Nama Orang Tua hanya boleh berisi huruf");
+                } else {
+                    textInputLayoutNamaOrangTua.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
@@ -85,8 +108,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         });
 
         // Menyembunyikan atau Menampilkan Kata Sandi
-        textInputLayout = findViewById(R.id.R_textinputlayoutkatasandi);
-        textInputEditText = findViewById(R.id.R_inputkatasandi);
+        textInputLayoutKataSandi = findViewById(R.id.R_textinputlayoutkatasandi);
+        TextInputEditText textInputEditText = findViewById(R.id.R_inputkatasandi);
         textInputEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
@@ -97,18 +120,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 String katasandiInput = charSequence.toString();
                 if (katasandiInput.length() >= 8) {
-                    Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
-                    Matcher matcher = pattern.matcher(katasandiInput);
-                    boolean passwordsMatch = matcher.find();
-                    if (passwordsMatch) {
-                        textInputLayout.setHelperText("Kata Sandi Anda Sesuai ");
-                        textInputLayout.setError("");
+                    if (containsLetterAndDigit(katasandiInput)) {
+                        textInputLayoutKataSandi.setHelperText("Kata Sandi Anda Sesuai ");
+                        textInputLayoutKataSandi.setError(null);
                     } else {
-                        textInputLayout.setError("Kombinasi Huruf (Kapital dan Kecil), Angka dan Simbol");
+                        textInputLayoutKataSandi.setError("Kombinasi Huruf dan Angka diperlukan");
                     }
-                    } else {
-                        textInputLayout.setHelperText("Kata Sandi Minimal 8 Karakter");
-                        textInputLayout.setError("");
+                } else {
+                    textInputLayoutKataSandi.setHelperText("Kata Sandi Minimal 8 Karakter");
+                    textInputLayoutKataSandi.setError(null);
                 }
             }
 
@@ -118,41 +138,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-//        // Menyembunyikan atau Menampilkan Konfirmasi Kata Sandi
-//        textInputLayout = findViewById(R.id.R_textinputlayoutkonfirmasikatasandi);
-//        textInputEditText = findViewById(R.id.R_inputkonfirmasikatasandi);
-//        textInputEditText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-//                String konfirmasikatasandiInput = charSequence.toString();
-//                if (konfirmasikatasandiInput.length() >= 8) {
-//                    Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
-//                    Matcher matcher = pattern.matcher(konfirmasikatasandiInput);
-//                    boolean passwordsMatch = matcher.find();
-//                    if (passwordsMatch) {
-//                        textInputLayout.setHelperText("Kata Sandi Anda Sesuai ");
-//                        textInputLayout.setError("");
-//                    } else {
-//                        textInputLayout.setError("Kombinasi Huruf (Kapital dan Kecil), Angka dan Simbol");
-//                    }
-//                } else {
-//                    textInputLayout.setHelperText("Kata Sandi Minimal 8 Karakter");
-//                    textInputLayout.setError("");
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
-        R_edt_namaorangtua = findViewById(R.id.R_edt_namaorangtua);
         R_edt_nikorangtua = findViewById(R.id.R_edt_nikorangtua);
         R_edt_tanggallahir = findViewById(R.id.R_edt_tanggallahir);
         R_edt_alamat = findViewById(R.id.R_edt_alamat);
@@ -172,15 +157,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.R_btn_1:
                 if (TextUtils.isEmpty(R_edt_namaorangtua.getText().toString())) {
                     Toast.makeText(this, "Nama Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(R_edt_nikorangtua.getText().toString())){
+                } else if (TextUtils.isEmpty(R_edt_nikorangtua.getText().toString())) {
                     Toast.makeText(this, "NIK Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(R_edt_tanggallahir.getText().toString())){
+                } else if (TextUtils.isEmpty(R_edt_tanggallahir.getText().toString())) {
                     Toast.makeText(this, "Tanggal Lahir Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(R_edt_alamat.getText().toString())){
+                } else if (TextUtils.isEmpty(R_edt_alamat.getText().toString())) {
                     Toast.makeText(this, "Alamat belum diisi", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(R_edt_email.getText().toString())){
+                } else if (TextUtils.isEmpty(R_edt_email.getText().toString())) {
                     Toast.makeText(this, "Email belum diisi", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(R_inputkatasandi.getText().toString())){
+                } else if (TextUtils.isEmpty(R_inputkatasandi.getText().toString())) {
                     Toast.makeText(this, "Kata Sandi belum diisi", Toast.LENGTH_SHORT).show();
                 } else {
                     nama = R_edt_namaorangtua.getText().toString();
@@ -191,7 +176,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     katasandi = R_inputkatasandi.getText().toString();
                     register(nama, nik, tanggallahir, alamat, email, katasandi);
                 }
-                
                 break;
             case R.id.R_txt_masuk:
                 Intent intent = new Intent(this, LoginActivity.class);
@@ -208,7 +192,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         call.enqueue(new Callback<Register>() {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
-                if(response.body() != null && response.isSuccessful() && response.body().isStatus()) {
+                if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
                     Toast.makeText(RegisterActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -223,5 +207,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(RegisterActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean isValidName(String name) {
+        String regex = "^[a-zA-Z\\s]+$"; // Only letters and spaces allowed
+        return name.matches(regex);
+    }
+
+    private boolean containsLetterAndDigit(String input) {
+        // Memeriksa apakah terdapat minimal satu huruf dan satu angka
+        return input.matches(".*[a-zA-Z].*") && input.matches(".*\\d.*");
     }
 }

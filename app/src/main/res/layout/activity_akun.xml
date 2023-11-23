@@ -10,9 +10,10 @@
         android:id="@+id/A_ly_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/A_img_1"
             android:layout_width="wrap_content"
@@ -20,16 +21,17 @@
             android:background="@android:color/transparent"
             android:src="@drawable/ic_back"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
         <TextView
+            android:id="@+id/A_txt_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/A_img_1"
             android:layout_marginLeft="5dp"
-            android:text="Akun"
+            android:layout_toRightOf="@+id/A_img_1"
             android:fontFamily="@font/poppinssemibold"
-            android:textSize="17dp"
+            android:text="Akun"
             android:textColor="@color/black"
-            android:id="@+id/A_txt_1" />
+            android:textSize="17dp" />
     </LinearLayout>
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -37,59 +39,63 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@id/A_ly_1"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
         android:background="@color/lightgrey"
-        app:srcCompat="@drawable/ic_person1"
-        app:shapeAppearanceOverlay="@style/circular"
         android:padding="5dp"
-        tools:ignore="SpeakableTextPresentCheck"/>
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/ic_person1"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
         android:id="@+id/A_ly_2"
-        android:layout_toRightOf="@id/A_btn_1"
-        android:layout_below="@id/A_ly_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@id/A_ly_1"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="60dp"
-        android:layout_marginLeft="30dp">
+        android:layout_toRightOf="@id/A_btn_1"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/A_txt_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama Orang Tua"
             android:fontFamily="@font/poppinssemibold"
-            android:textSize="15sp"
-            android:textColor="@color/grey"/>
+            android:text="Nama Orang Tua"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/A_txt_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NIK Orang Tua"
             android:fontFamily="@font/poppinssemibold"
-            android:textSize="15sp"
-            android:textColor="@color/grey"/>
+            android:text="NIK Orang Tua"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/A_ly_3"
-        android:layout_below="@id/A_btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/A_btn_1"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="60dp" >
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/A_txt_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:layout_weight="1"
-            android:text="Profil Akun"
             android:fontFamily="@font/poppinssemibold"
-            android:textSize="15sp"
-            android:textColor="@color/grey"
-            android:layout_marginLeft="30dp" />
+            android:text="Profil Akun"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
         <ImageButton
             android:id="@+id/A_img_2"
             android:layout_width="wrap_content"
@@ -101,22 +107,24 @@
 
     <LinearLayout
         android:id="@+id/A_ly_4"
-        android:layout_below="@id/A_ly_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@id/A_ly_3"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="20dp" >
+        android:orientation="horizontal">
+
         <TextView
             android:id="@+id/A_txt_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
             android:layout_weight="1"
-            android:text="Pengaturan Akun"
             android:fontFamily="@font/poppinssemibold"
-            android:textSize="15sp"
-            android:textColor="@color/grey"
-            android:layout_marginLeft="30dp" />
+            android:text="Pengaturan Akun"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
         <ImageButton
             android:id="@+id/A_img_3"
             android:layout_width="wrap_content"

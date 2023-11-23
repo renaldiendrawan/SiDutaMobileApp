@@ -75,18 +75,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 String katasandiInput = charSequence.toString();
                 if (katasandiInput.length() >= 8) {
-                    Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
-                    Matcher matcher = pattern.matcher(katasandiInput);
-                    boolean passwordsMatch = matcher.find();
-                    if (passwordsMatch) {
+                    if (containsLetterAndDigit(katasandiInput)) {
                         textInputLayout.setHelperText("Kata Sandi Anda Sesuai ");
-                        textInputLayout.setError("");
+                        textInputLayout.setError(null);
                     } else {
-                        textInputLayout.setError("Kombinasi Huruf (Kapital dan Kecil), Angka dan Simbol");
+                        textInputLayout.setError("Kombinasi Huruf dan Angka diperlukan");
                     }
                 } else {
                     textInputLayout.setHelperText("Kata Sandi Minimal 8 Karakter");
-                    textInputLayout.setError("");
+                    textInputLayout.setError(null);
                 }
             }
 
@@ -130,6 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     katasandi = L_inputkatasandi.getText().toString();
                     login(nik, katasandi);
                 }
+
                 break;
             case R.id.L_txt_daftar:
                 Intent intent = new Intent(this, RegisterActivity.class);
@@ -157,7 +155,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editor.putString("nik_ibu", loginData.getNikIbu());
                     editor.apply();
 
-                    dataShared.setData(DataShared.KEY.ACC_ID_IBU, loginData.getIdIbu());
                     dataShared.setData(DataShared.KEY.ACC_NIK_IBU, loginData.getNikIbu());
                     dataShared.setData(DataShared.KEY.ACC_NAMA_IBU, loginData.getNamaIbu());
                     dataShared.setData(DataShared.KEY.ACC_ALAMAT, loginData.getAlamat());
@@ -179,5 +176,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean containsLetterAndDigit(String input) {
+        // Memeriksa apakah terdapat minimal satu huruf dan satu angka
+        return input.matches(".*[a-zA-Z].*") && input.matches(".*\\d.*");
     }
 }

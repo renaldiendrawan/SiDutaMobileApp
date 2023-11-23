@@ -35,11 +35,12 @@
                 android:id="@+id/card_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
                 android:layout_marginTop="35dp"
                 android:layout_marginEnd="30dp"
-                android:layout_alignParentEnd="true"
                 app:cardCornerRadius="100dp">
+
                 <ImageView
                     android:id="@+id/btn_akun"
                     android:layout_width="match_parent"
@@ -47,7 +48,7 @@
                     android:background="@drawable/background_profil"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_person_outline"
-                    tools:ignore="SpeakableTextPresentCheck"/>
+                    tools:ignore="SpeakableTextPresentCheck" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -211,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/B_txt_3"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp" />
         </RelativeLayout>
     </FrameLayout>
 </ScrollView>

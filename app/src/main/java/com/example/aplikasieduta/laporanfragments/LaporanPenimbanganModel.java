@@ -5,7 +5,6 @@ public class LaporanPenimbanganModel {
 
     public LaporanPenimbanganModel(String nama_anak, String umur, String tanggal_penimbangan, String berat_badan, String tinggi_badan) {
         this.nama_anak = nama_anak;
-//        this.umur = umur;
         this.tgl_penimbangan = tanggal_penimbangan;
         this.berat_badan = berat_badan;
         this.tinggi_badan = tinggi_badan;
@@ -18,14 +17,6 @@ public class LaporanPenimbanganModel {
     public void setNama_anak(String nama_anak) {
         this.nama_anak = nama_anak;
     }
-
-//    public String getUmur() {
-//        return umur;
-//    }
-//
-//    public void setUmur(String umur) {
-//        this.umur = umur;
-//    }
 
     public String getTgl_penimbangan() {
         return tgl_penimbangan;

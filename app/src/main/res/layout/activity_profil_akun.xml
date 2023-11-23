@@ -10,45 +10,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/PF_ly_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp">
-        <ImageButton
-            android:id="@+id/PF_img_1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/PF_ly_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_back"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/PF_img_1"
-            android:layout_marginLeft="5dp"
-            android:text="Profil Akun"
-            android:fontFamily="@font/poppinssemibold"
-            android:textSize="17dp"
-            android:textColor="@color/black"
-            android:id="@+id/PF_txt_1" />
-    </LinearLayout>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/PF_btn_1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/PF_ly_1"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="30dp"
-        android:background="@color/lightgrey"
-        app:shapeAppearanceOverlay="@style/circular"
-        android:padding="5dp"
-        app:srcCompat="@drawable/ic_person1"
-        tools:ignore="SpeakableTextPresentCheck"/>
+            <ImageButton
+                android:id="@+id/PF_img_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/PF_txt_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/PF_img_1"
+                android:fontFamily="@font/poppinssemibold"
+                android:text="Profil Akun"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/PF_btn_1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/PF_ly_1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/lightgrey"
+            android:padding="5dp"
+            app:shapeAppearanceOverlay="@style/circular"
+            app:srcCompat="@drawable/ic_person1"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/PF_floatingActionButton2"
@@ -64,122 +66,128 @@
             android:focusable="true"
             android:tint="@color/white"
             app:backgroundTint="#000080"
-            app:srcCompat="@drawable/ic_camera"/>
+            app:srcCompat="@drawable/ic_camera" />
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        android:layout_below="@+id/PF_btn_1"
-        android:padding="30dp"
-        android:id="@+id/PF_ly_2">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:background="@drawable/button_shape"
-                android:hint="Nama Lengkap Orang Tua"
-                android:textColorHint="@color/grey"
-                android:paddingLeft="10dp"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="15sp"
-                android:id="@+id/PF_edt_namaorangtua" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/PF_ly_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:background="@drawable/button_shape"
-                android:layout_marginTop="10dp"
-                android:hint="NIK Orang Tua"
-                android:textColorHint="@color/grey"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="15sp"
-                android:paddingLeft="10dp"
-                android:backgroundTint="@color/white"
-                android:id="@+id/PF_edt_nikorangtua" />
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_below="@+id/PF_btn_1"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:padding="30dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PF_edt_namaorangtua"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Nama Lengkap Orang Tua"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PF_edt_nikorangtua"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="NIK Orang Tua"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PF_edt_tanggallahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Tanggal Lahir Orang Tua"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PF_edt_alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Alamat"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15dp"
+                    tools:ignore="TextSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PF_edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Email"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15dp"
+                    tools:ignore="TextSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/PF_btn_2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:background="@drawable/button_shape"
-                android:layout_marginTop="10dp"
-                android:hint="Tanggal Lahir Orang Tua"
-                android:textColorHint="@color/grey"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="15sp"
-                android:paddingLeft="10dp"
-                android:backgroundTint="@color/white"
-                android:id="@+id/PF_edt_tanggallahir"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/PF_edt_alamat"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Alamat"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/PF_edt_email"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Email"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Simpan"
-        android:layout_below="@+id/PF_ly_2"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_shape"
-        android:width="300dp"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:fontFamily="@font/poppinssemibold"
-        android:id="@+id/PF_btn_2"/>
+            android:layout_below="@+id/PF_ly_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp"
+            android:width="300dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Simpan"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </ScrollView>

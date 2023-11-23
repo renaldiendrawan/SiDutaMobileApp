@@ -50,7 +50,7 @@ public class LaporanPenimbanganFragment extends Fragment {
         dataShared = new DataShared(requireContext());
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<LaporanPenimbanganResponse> call = apiInterface.ambillaporanpenimbangan(dataShared.getData(DataShared.KEY.ACC_ID_IBU));
+        Call<LaporanPenimbanganResponse> call = apiInterface.ambillaporanpenimbangan(dataShared.getData(DataShared.KEY.ACC_NIK_IBU));
 
 
         call.enqueue(new Callback<LaporanPenimbanganResponse>() {
@@ -88,9 +88,9 @@ public class LaporanPenimbanganFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview_laporanpenimbangan);
         LaporanPenimbanganAdapter laporanPenimbanganAdapter1 = new LaporanPenimbanganAdapter(itemList, this);
         Context context = requireContext();
-// Initialize the LinearLayoutManager with the Context
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-// Now, you can set this layout manager to your RecyclerView
+
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_laporanpenimbangan);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(laporanPenimbanganAdapter1);

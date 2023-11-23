@@ -236,12 +236,9 @@ public class ProfilAkunActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Toast.makeText(ProfilAkunActivity.this, "ON CLICK", Toast.LENGTH_SHORT).show();
-
                 ApiClient.getClient().create(ApiInterface.class)
                         .editAkun(
-                                dataShared.getData(DataShared.KEY.ACC_ID_IBU),
-                                nik_ibu.getText().toString(),
+                                dataShared.getData(DataShared.KEY.ACC_NIK_IBU),
                                 nama_ibu.getText().toString(),
                                 tanggal_lahir.getText().toString(),
                                 alamat.getText().toString(),

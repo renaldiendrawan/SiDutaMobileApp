@@ -6,9 +6,6 @@ import com.google.gson.annotations.SerializedName;
 public class ProfilAkunModel {
 
     @Expose
-    @SerializedName("id_ibu")
-    private String idIbu;
-    @Expose
     @SerializedName("nama_ibu")
     private String nama_ibu;
     @Expose
@@ -73,14 +70,6 @@ public class ProfilAkunModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getIdIbu() {
-        return idIbu;
-    }
-
-    public void setIdIbu(String idIbu) {
-        this.idIbu = idIbu;
     }
 
     public String getImagepath() {

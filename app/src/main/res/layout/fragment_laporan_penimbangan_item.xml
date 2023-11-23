@@ -1,81 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemlaporanpenimbangan"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/itemlaporanpenimbangan"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="140dp"
+        android:layout_marginVertical="5dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginVertical="5dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/LP_textnama"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:id="@+id/LP_linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/LP_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/ic_balita"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:text="Nama Anak: "
+                    android:textColor="@color/primaryColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/LP_textnama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LP_linear2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_balita"
-                android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
-<!--            <TextView-->
-<!--                android:id="@+id/LP_textumur"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/LP_textnama"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:drawableStart="@drawable/ic_umur"-->
-<!--                android:fontFamily="@font/poppinsregular"-->
-<!--                android:textColor="@color/primaryColor"-->
-<!--                android:textSize="10sp"/>-->
-            <TextView
-                android:id="@+id/LP_texttanggal"
-                android:layout_width="wrap_content"
+                android:layout_below="@id/LP_linear1">
+
+                <TextView
+                    android:id="@+id/LP_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:drawableStart="@drawable/ic_date"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:text="Tanggal Penimbangan: "
+                    android:textColor="@color/primaryColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/LP_texttanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LP_linear3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/LP_textnama"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_date"
-                android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
-            <TextView
-                android:id="@+id/LP_textberat"
-                android:layout_width="wrap_content"
+                android:layout_below="@id/LP_linear2">
+
+                <TextView
+                    android:id="@+id/LP_berat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:drawableStart="@drawable/ic_beratbadan"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:text="Berat Badan: "
+                    android:textColor="@color/primaryColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/LP_textberat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LP_linear4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/LP_texttanggal"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_beratbadan"
-                android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/primaryColor"
-                android:textSize="10sp"/>
-            <TextView
-                android:id="@+id/LP_texttinggi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/LP_textberat"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_tinggibadan"
-                android:fontFamily="@font/poppinsregular"
-                android:textColor="@color/primaryColor"
-                android:textSize="10sp" />
+                android:layout_below="@id/LP_linear3">
+
+                <TextView
+                    android:id="@+id/LP_tinggi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:drawableStart="@drawable/ic_tinggibadan"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:text="Tinggi Badan: "
+                    android:textColor="@color/primaryColor"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/LP_texttinggi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/poppinsregular"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

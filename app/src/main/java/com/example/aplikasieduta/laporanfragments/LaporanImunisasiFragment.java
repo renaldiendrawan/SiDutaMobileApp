@@ -46,13 +46,13 @@ public class LaporanImunisasiFragment extends Fragment {
 
         dataShared = new DataShared(requireContext());
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<LaporanImunisasiResponse> call = apiInterface.ambillaporanimunisasi(dataShared.getData(DataShared.KEY.ACC_ID_IBU));
+        Call<LaporanImunisasiResponse> call = apiInterface.ambillaporanimunisasi(dataShared.getData(DataShared.KEY.ACC_NIK_IBU).toString());
 
         call.enqueue(new Callback<LaporanImunisasiResponse>() {
             @Override
             public void onResponse(Call<LaporanImunisasiResponse> call, Response<LaporanImunisasiResponse> response) {
                 LaporanImunisasiResponse respon = response.body();
-//                Toast.makeText(getContext(), respon.getMessage(), Toast.LENGTH_SHORT).show();
+
                 if (response.isSuccessful()) {
                     if (respon != null && respon.isSuccess() == true) {
                         ArrayList<LaporanImunisasiModel> list = respon.getData();
@@ -85,9 +85,9 @@ public class LaporanImunisasiFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview_laporanimunisasi);
         laporanImunisasiAdapter = new LaporanImunisasiAdapter(itemList, this);
         Context context = requireContext();
-// Initialize the LinearLayoutManager with the Context
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-// Now, you can set this layout manager to your RecyclerView
+
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_laporanimunisasi);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(laporanImunisasiAdapter);

@@ -1,7 +1,5 @@
 package com.example.aplikasieduta;
 
-import static android.app.ProgressDialog.show;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -22,12 +20,6 @@ import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,8 +27,8 @@ import retrofit2.Response;
 
 public class GantiKataSandiActivity extends AppCompatActivity {
 
-    TextInputLayout textInputLayout;
-    TextInputEditText textInputEditText;
+    TextInputLayout textInputLayoutKataSandi, textInputLayoutKonfirmasi;
+    TextInputEditText textInputEditTextKataSandi, textInputEditTextKonfirmasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +50,9 @@ public class GantiKataSandiActivity extends AppCompatActivity {
         });
 
         // Menyembunyikan atau Menampilkan Kata Sandi
-        textInputLayout = findViewById(R.id.GKS_katasandilayout);
-        textInputEditText = findViewById(R.id.GKS_katasandiedit);
-        textInputEditText.addTextChangedListener(new TextWatcher() {
+        textInputLayoutKataSandi = findViewById(R.id.GKS_katasandilayout);
+        textInputEditTextKataSandi = findViewById(R.id.GKS_katasandiedit);
+        textInputEditTextKataSandi.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
 
@@ -69,19 +61,11 @@ public class GantiKataSandiActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 String katasandibaruInput = charSequence.toString();
-                if (katasandibaruInput.length() >= 8) {
-                    Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
-                    Matcher matcher = pattern.matcher(katasandibaruInput);
-                    boolean passwordsMatch = matcher.find();
-                    if (passwordsMatch) {
-                        textInputLayout.setHelperText("Kata Sandi Anda Sesuai ");
-                        textInputLayout.setError("");
-                    } else {
-                        textInputLayout.setError("Kombinasi Huruf (Kapital dan Kecil), Angka dan Simbol");
-                    }
+                if (isValidPassword(katasandibaruInput)) {
+                    textInputLayoutKataSandi.setHelperText("Kata Sandi Anda Sesuai ");
+                    textInputLayoutKataSandi.setError(null);
                 } else {
-                    textInputLayout.setHelperText("Kata Sandi Minimal 8 Karakter");
-                    textInputLayout.setError("");
+                    textInputLayoutKataSandi.setError("Kombinasi Huruf dan Angka diperlukan");
                 }
             }
 
@@ -91,10 +75,10 @@ public class GantiKataSandiActivity extends AppCompatActivity {
             }
         });
 
-        // Menyembunyikan atau Menampilkan Kata Sandi
-        textInputLayout = findViewById(R.id.GKS_konfirmasilayout);
-        textInputEditText = findViewById(R.id.GKS_konfirmasiedit);
-        textInputEditText.addTextChangedListener(new TextWatcher() {
+        // Menyembunyikan atau Menampilkan Konfirmasi Kata Sandi
+        textInputLayoutKonfirmasi = findViewById(R.id.GKS_konfirmasilayout);
+        textInputEditTextKonfirmasi = findViewById(R.id.GKS_konfirmasiedit);
+        textInputEditTextKonfirmasi.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
 
@@ -103,19 +87,11 @@ public class GantiKataSandiActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 String konfirmasikatasandibaruInput = charSequence.toString();
-                if (konfirmasikatasandibaruInput.length() >= 8) {
-                    Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
-                    Matcher matcher = pattern.matcher(konfirmasikatasandibaruInput);
-                    boolean passwordsMatch = matcher.find();
-                    if (passwordsMatch) {
-                        textInputLayout.setHelperText("Kata Sandi Anda Sesuai ");
-                        textInputLayout.setError("");
-                    } else {
-                        textInputLayout.setError("Kombinasi Huruf (Kapital dan Kecil), Angka dan Simbol");
-                    }
+                if (isValidPassword(konfirmasikatasandibaruInput)) {
+                    textInputLayoutKonfirmasi.setHelperText("Kata Sandi Anda Sesuai ");
+                    textInputLayoutKonfirmasi.setError(null);
                 } else {
-                    textInputLayout.setHelperText("Kata Sandi Minimal 8 Karakter");
-                    textInputLayout.setError("");
+                    textInputLayoutKonfirmasi.setError("Kombinasi Huruf dan Angka diperlukan");
                 }
             }
 
@@ -136,38 +112,44 @@ public class GantiKataSandiActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         Intent intent = null;
-        // String notelp = intent.getStringExtra("notelp");
 
         EditText password = findViewById(R.id.GKS_katasandiedit),
-        kode_otp = findViewById(R.id.LKS_kodeotpedit);
+                kode_otp = findViewById(R.id.LKS_kodeotpedit);
 
         Button konfirmasi = findViewById(R.id.GKS_btn_1);
 
         konfirmasi.setOnClickListener(v->{
 
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Lupa_katasandi> lupaKatasandiCall = apiInterface.lupaKatasandi_ganti(email,
-                kode_otp.getText().toString(),password.getText().toString());
-             lupaKatasandiCall.enqueue(new Callback<Lupa_katasandi>() {
-            @Override
-            public void onResponse(Call<Lupa_katasandi> call, Response<Lupa_katasandi> response) {
-                if (response.body().isStatus() == true){
-                    Toast.makeText(GantiKataSandiActivity.this, "Kata Sandi Berhasil Diubah", Toast.LENGTH_SHORT).show();
-                    Intent buka = new Intent(GantiKataSandiActivity.this, LoginActivity.class);
-                    startActivity(buka);
-                }else {
-                    Toast.makeText(GantiKataSandiActivity.this, "Kode OTP Salah", Toast.LENGTH_SHORT).show();
+            ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+            Call<Lupa_katasandi> lupaKatasandiCall = apiInterface.lupaKatasandi_ganti(email,
+                    kode_otp.getText().toString(),password.getText().toString());
+            lupaKatasandiCall.enqueue(new Callback<Lupa_katasandi>() {
+                @Override
+                public void onResponse(Call<Lupa_katasandi> call, Response<Lupa_katasandi> response) {
+                    if (response.body().isStatus() == true){
+                        Toast.makeText(GantiKataSandiActivity.this, "Kata Sandi Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                        Intent buka = new Intent(GantiKataSandiActivity.this, LoginActivity.class);
+                        startActivity(buka);
+                    }else {
+                        Toast.makeText(GantiKataSandiActivity.this, "Kode OTP Salah", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<Lupa_katasandi> call, Throwable t) {
-                Toast.makeText(GantiKataSandiActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("error", t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<Lupa_katasandi> call, Throwable t) {
+                    Toast.makeText(GantiKataSandiActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("error", t.getMessage());
+                }
+            });
 
         });
+    }
+
+    private boolean isValidPassword(String password) {
+        // Memeriksa apakah terdapat minimal satu huruf dan satu angka
+        // serta panjang minimal 8 karakter
+        return password.matches(".*[a-zA-Z].*") && password.matches(".*\\d.*") && password.length() >= 8;
     }
 }

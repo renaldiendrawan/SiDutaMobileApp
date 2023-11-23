@@ -88,7 +88,6 @@ public class DataBalitaActivity extends AppCompatActivity {
             }
         });
 
-
         String[] genderOptions = getResources().getStringArray(R.array.jenis_kelamin_array);
         spinner = findViewById(R.id.DB_edt_jeniskelaminanak);
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, genderOptions);
@@ -171,7 +170,7 @@ public class DataBalitaActivity extends AppCompatActivity {
                                         .enqueue(new Callback<DataBalitaResponse>() {
                                             @Override
                                             public void onResponse(Call<DataBalitaResponse> call, Response<DataBalitaResponse> response) {
-                                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                                                     Toast.makeText(DataBalitaActivity.this, "Update Foto Berhasil", Toast.LENGTH_SHORT).show();
 
 //                                                    dataShared.setData(DataShared.KEY.ACC_IMAGE, response.body().getImagepath());
@@ -181,7 +180,7 @@ public class DataBalitaActivity extends AppCompatActivity {
                                                             .placeholder(R.drawable.ic_person1)
                                                             .into(imageView);
 
-                                                }else {
+                                                } else {
                                                     Toast.makeText(DataBalitaActivity.this, "Update Foto Gagal", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
@@ -218,15 +217,14 @@ public class DataBalitaActivity extends AppCompatActivity {
         });
         nama_anak.setText(dataShared.getData(DataShared.KEY.ACC_NAMA_ANAK));
         tanggal_lahir_anak.setText(dataShared.getData(DataShared.KEY.ACC_TANGGAL_LAHIR_ANAK));
-//        jenis_kelamin.setText(dataShared.getData(DataShared.KEY.ACC_JENIS_KELAMIN));
         bb_lahir.setText(dataShared.getData(DataShared.KEY.ACC_BB_LAHIR));
         tb_lahir.setText(dataShared.getData(DataShared.KEY.ACC_TB_LAHIR));
         nama_ayah.setText(dataShared.getData(DataShared.KEY.ACC_NAMA_AYAH));
         nama_ibu.setText(dataShared.getData(DataShared.KEY.ACC_NAMA_IBU));
 
-
         namaAnak = getIntent().getStringExtra(NAMA_ANAK);
         id = getIntent().getStringExtra(ID_ANAK);
+
 
         ApiClient.getClient().create(ApiInterface.class).getDataBalita(namaAnak)
                 .enqueue(new Callback<DataBalitaResponse>() {
@@ -238,13 +236,10 @@ public class DataBalitaActivity extends AppCompatActivity {
                                 DataBalitaModel data = list.get(0);
                                 nama_anak.setText(data.getNama_anak());
                                 tanggal_lahir_anak.setText(data.getTanggal_lahir_anak());
-//                                jenis_kelamin.setText(data.getJenis_kelamin());
                                 bb_lahir.setText(data.getBb_lahir());
                                 tb_lahir.setText(data.getTb_lahir());
                                 nama_ayah.setText(data.getNama_ayah());
                                 nama_ibu.setText(dataShared.getData(DataShared.KEY.ACC_NAMA_IBU));
-
-                                Toast.makeText(DataBalitaActivity.this, data.getImagepath(), Toast.LENGTH_SHORT).show();
 
                                 Glide.with(DataBalitaActivity.this)
                                         .load(ApiClient.PHOTO_URL_ANAK + data.getImagepath())
@@ -253,8 +248,8 @@ public class DataBalitaActivity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(DataBalitaActivity.this, "Data Kosong", Toast.LENGTH_SHORT).show();
                             }
-                        }else {
-                            Toast.makeText(DataBalitaActivity.this, "RESPONSE NULL", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(DataBalitaActivity.this, "RESPONSE NULL -> " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -279,7 +274,7 @@ public class DataBalitaActivity extends AppCompatActivity {
 
                 // Make Retrofit call to edit data
                 ApiClient.getClient().create(ApiInterface.class)
-                        .editDataBalita(id, namaanak, tanggallahiranak, jeniskelamin, bblahir, tblahir, namaayah, namaibu)
+                        .editDataBalita(id, namaanak, tanggallahiranak, jeniskelamin, bblahir, tblahir, namaayah, namaibu, nikIbu)
                         .enqueue(new Callback<DataBalitaUpdateRespon>() {
                             @Override
                             public void onResponse(Call<DataBalitaUpdateRespon> call, Response<DataBalitaUpdateRespon> response) {
@@ -287,13 +282,13 @@ public class DataBalitaActivity extends AppCompatActivity {
                                     Toast.makeText(DataBalitaActivity.this, "Data berhasil diedit", Toast.LENGTH_SHORT).show();
 
                                     // Update data in SharedPreferences
-                                    dataShared.setData(DataShared.KEY.ACC_NAMA_ANAK, namaanak);
-                                    dataShared.setData(DataShared.KEY.ACC_TANGGAL_LAHIR_ANAK, tanggallahiranak);
-                                    dataShared.setData(DataShared.KEY.ACC_JENIS_KELAMIN, jeniskelamin);
-                                    dataShared.setData(DataShared.KEY.ACC_BB_LAHIR, bblahir);
-                                    dataShared.setData(DataShared.KEY.ACC_TB_LAHIR, tblahir);
-                                    dataShared.setData(DataShared.KEY.ACC_NAMA_AYAH, namaayah);
-                                    dataShared.setData(DataShared.KEY.ACC_NAMA_IBU, namaibu);
+//                                    dataShared.setData(DataShared.KEY.ACC_NAMA_ANAK, namaanak);
+//                                    dataShared.setData(DataShared.KEY.ACC_TANGGAL_LAHIR_ANAK, tanggallahiranak);
+//                                    dataShared.setData(DataShared.KEY.ACC_JENIS_KELAMIN, jeniskelamin);
+//                                    dataShared.setData(DataShared.KEY.ACC_BB_LAHIR, bblahir);
+//                                    dataShared.setData(DataShared.KEY.ACC_TB_LAHIR, tblahir);
+//                                    dataShared.setData(DataShared.KEY.ACC_NAMA_AYAH, namaayah);
+//                                    dataShared.setData(DataShared.KEY.ACC_NAMA_IBU, namaibu);
                                 } else {
                                     Toast.makeText(DataBalitaActivity.this, "Data gagal diedit", Toast.LENGTH_SHORT).show();
                                 }
@@ -301,9 +296,9 @@ public class DataBalitaActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<DataBalitaUpdateRespon> call, Throwable t) {
-
+                                t.printStackTrace();
                                 Toast.makeText(DataBalitaActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                                Log.e("error",  t.getMessage());
+                                Log.e("error", t.getMessage());
                             }
                         });
             }
@@ -315,7 +310,7 @@ public class DataBalitaActivity extends AppCompatActivity {
         ).enqueue(new Callback<DataBalitaResponse>() {
             @Override
             public void onResponse(Call<DataBalitaResponse> call, Response<DataBalitaResponse> response) {
-                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("true")){
+                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("true")) {
 
                     Glide.with(DataBalitaActivity.this)
                             .load(response.body().getImagepath())

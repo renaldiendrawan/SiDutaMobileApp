@@ -90,7 +90,7 @@ public class BerandaFragment extends Fragment {
         databalitaList = new ArrayList<>();
 
         ApiClient.getClient().create(ApiInterface.class)
-                .listData(dataShared.getData(DataShared.KEY.ACC_ID_IBU))
+                .listData(dataShared.getData(DataShared.KEY.ACC_NIK_IBU))
                 .enqueue(new Callback<DataBalitaResponse>() {
                     @Override
                     public void onResponse(Call<DataBalitaResponse> call, Response<DataBalitaResponse> response) {
@@ -115,39 +115,11 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String namabalita = sharedPreferences.getString("namabalita", "");
-//            Toast.makeText(getContext(), namabalita, Toast.LENGTH_SHORT).show();
                 Intent pindah = new Intent(getActivity(), DataBalitaActivity.class);
                 pindah.putExtra("namabalita", namabalita);
                 startActivity(pindah);
             }
         });
-
-//        ViewPager2 viewPager2 = rootView.findViewById(R.id.B_smartSlider);
-
-//        List<SliderItem> sliderItems = new ArrayList<>();
-//        sliderItems.add(new SliderItem(R.drawable.contohartikel, "artikel 1"));
-//        sliderItems.add(new SliderItem(R.drawable.gambarartikel2, "artikel 2"));
-//        sliderItems.add(new SliderItem(R.drawable.gambarartikel3, "artikel 3"));
-//
-//        viewPager2.setAdapter(new SliderAdapter(sliderItems, viewPager2, 3000));
-
-//        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                SliderItem item = sliderItems.get(position);
-//            }
-//
-//        });
-
-//        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                startActivity(
-//                        new Intent(requireContext(), ArtikelActivity.class)
-//                                .putExtra(ArtikelActivity.ID, position)
-//                );
-//            }
-//        });
 
         viewPager2 = rootView.findViewById(R.id.viewpager);
         int[] images = {R.drawable.gambarartikel1, R.drawable.gambarartikel2, R.drawable.gambarartikel3};
@@ -230,14 +202,15 @@ public class BerandaFragment extends Fragment {
                     new BerandaFragmentAdapter.OnClickListener() {
                         @Override
                         public void onClick(int position) {
+
                             startActivity(new
                                     Intent(requireContext(), DataBalitaActivity.class)
                                     .putExtra(DataBalitaActivity.ID_ANAK, "" + databalitaList.get(position).getId_anak())
                                     .putExtra(DataBalitaActivity.NAMA_ANAK, databalitaList.get(position).getNama_anak())
                             );
-                            Toast.makeText(requireContext(), databalitaList.get(position).getNama_anak(), Toast.LENGTH_SHORT).show();
                         }
                     });
+
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);

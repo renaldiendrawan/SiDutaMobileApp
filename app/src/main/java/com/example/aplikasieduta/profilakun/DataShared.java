@@ -56,7 +56,6 @@ public class DataShared {
     }
 
     public enum KEY {
-        ACC_ID_IBU,
         ACC_NIK_IBU,
         ACC_NAMA_IBU,
         ACC_TANGGAL_LAHIR,
