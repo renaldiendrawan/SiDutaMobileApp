@@ -63,6 +63,7 @@
                 android:text=" Tanggal Artikel"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />
+
         </LinearLayout>
 
         <ImageView

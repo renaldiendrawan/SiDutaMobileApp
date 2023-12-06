@@ -1,6 +1,5 @@
-package com.example.aplikasieduta;
+package com.example.aplikasieduta.model.register;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +9,15 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.aplikasieduta.model.register.Register;
+import com.example.aplikasieduta.MainActivity;
+import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.model.login.LoginActivity;
 import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,15 +31,14 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextInputLayout textInputLayoutNamaOrangTua, textInputLayoutKataSandi;
-    TextInputEditText R_edt_namaorangtua, R_edt_nikorangtua, R_edt_tanggallahir, R_edt_alamat, R_edt_email, R_inputkatasandi;
+    TextInputLayout textInputLayoutNamaOrangTua, textInputLayoutNIK, textInputLayoutKataSandi;
+    TextInputEditText R_edt_namaorangtua, R_edt_nikorangtua, R_edt_tanggallahir, R_edt_namaayah, R_edt_alamat, R_edt_email, R_inputkatasandi;
     Button R_btn_1;
     TextView R_txt_masuk;
-    String nama, nik, tanggallahir, alamat, email, katasandi;
+    String nama, nik, tanggallahir, namaayah, alamat, email, katasandi;
     ApiInterface apiInterface;
     private int tahun, bulan, tanggal;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +71,31 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     textInputLayoutNamaOrangTua.setError("Nama Orang Tua hanya boleh berisi huruf");
                 } else {
                     textInputLayoutNamaOrangTua.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        // Menyembunyikan atau Menampilkan NIK Orang Tua
+        textInputLayoutNIK = findViewById(R.id.R_textInputLayoutNIK);
+        R_edt_nikorangtua = findViewById(R.id.R_edt_nikorangtua);
+        R_edt_nikorangtua.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                String nikOrangTuaInput = charSequence.toString().trim();
+                if (!isValidNIK(nikOrangTuaInput)) {
+                    textInputLayoutNIK.setError("NIK harus terdiri dari angka");
+                } else {
+                    textInputLayoutNIK.setError(null);
                 }
             }
 
@@ -138,8 +162,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        R_edt_nikorangtua = findViewById(R.id.R_edt_nikorangtua);
-        R_edt_tanggallahir = findViewById(R.id.R_edt_tanggallahir);
+        R_edt_namaayah = findViewById(R.id.R_edt_namaayah);
         R_edt_alamat = findViewById(R.id.R_edt_alamat);
         R_edt_email = findViewById(R.id.R_edt_email);
         R_inputkatasandi = findViewById(R.id.R_inputkatasandi);
@@ -156,11 +179,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
             case R.id.R_btn_1:
                 if (TextUtils.isEmpty(R_edt_namaorangtua.getText().toString())) {
-                    Toast.makeText(this, "Nama Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Nama Ibu belum diisi", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(R_edt_nikorangtua.getText().toString())) {
-                    Toast.makeText(this, "NIK Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "NIK Ibu belum diisi", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(R_edt_tanggallahir.getText().toString())) {
-                    Toast.makeText(this, "Tanggal Lahir Orang Tua belum diisi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Tanggal Lahir Ibu belum diisi", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(R_edt_namaayah.getText().toString())) {
+                    Toast.makeText(this, "Nama Ayah belum diisi", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(R_edt_alamat.getText().toString())) {
                     Toast.makeText(this, "Alamat belum diisi", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(R_edt_email.getText().toString())) {
@@ -171,10 +196,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     nama = R_edt_namaorangtua.getText().toString();
                     nik = R_edt_nikorangtua.getText().toString();
                     tanggallahir = R_edt_tanggallahir.getText().toString();
+                    namaayah = R_edt_namaayah.getText().toString();
                     alamat = R_edt_alamat.getText().toString();
                     email = R_edt_email.getText().toString();
                     katasandi = R_inputkatasandi.getText().toString();
-                    register(nama, nik, tanggallahir, alamat, email, katasandi);
+                    register(nama, nik, tanggallahir, namaayah, alamat, email, katasandi);
                 }
                 break;
             case R.id.R_txt_masuk:
@@ -185,10 +211,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void register(String nama, String nik, String tanggallahir, String alamat, String email, String katasandi) {
+    private void register(String nama, String nik, String tanggallahir, String namaayah, String alamat, String email, String katasandi) {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<Register> call = apiInterface.registerResponse(nama, nik, tanggallahir, alamat, email, katasandi);
+        Call<Register> call = apiInterface.registerResponse(nama, nik, tanggallahir, namaayah, alamat, email, katasandi);
         call.enqueue(new Callback<Register>() {
             @Override
             public void onResponse(Call<Register> call, Response<Register> response) {
@@ -212,6 +238,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private boolean isValidName(String name) {
         String regex = "^[a-zA-Z\\s]+$"; // Only letters and spaces allowed
         return name.matches(regex);
+    }
+
+    private boolean isValidNIK(String nik) {
+        // Memeriksa apakah NIK hanya terdiri dari angka
+        return nik.matches("\\d+");
     }
 
     private boolean containsLetterAndDigit(String input) {

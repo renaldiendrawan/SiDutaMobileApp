@@ -1,15 +1,22 @@
 package com.example.aplikasieduta.artikel;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ArtikelModel {
 
-    public String id_artikel, judul_artikel, nama_kader, tanggal_artikel, img_artikel, isi_artikel;
+    public String id_artikel, judul_artikel, nama_kader, tanggal_artikel, isi_artikel;
 
-    public ArtikelModel(String id_artikel, String judul_artikel, String nama_kader, String tanggal_artikel, String img_artikel, String isi_artikel) {
+    @Expose
+    @SerializedName("img_artikel")
+    public String img_path;
+
+    public ArtikelModel(String id_artikel, String judul_artikel, String nama_kader, String tanggal_artikel, String img_path, String isi_artikel) {
         this.id_artikel = id_artikel;
         this.judul_artikel = judul_artikel;
         this.nama_kader = nama_kader;
         this.tanggal_artikel = tanggal_artikel;
-        this.img_artikel = img_artikel;
+        this.img_path = img_path;
         this.isi_artikel = isi_artikel;
     }
 
@@ -45,12 +52,12 @@ public class ArtikelModel {
         this.tanggal_artikel = tanggal_artikel;
     }
 
-    public String getImg_artikel() {
-        return img_artikel;
+    public String getImg_path() {
+        return img_path;
     }
 
-    public void setImg_artikel(String img_artikel) {
-        this.img_artikel = img_artikel;
+    public void setImg_path(String img_path) {
+        this.img_path = img_path;
     }
 
     public String getIsi_artikel() {

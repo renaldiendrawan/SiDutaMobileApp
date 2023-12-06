@@ -55,4 +55,5 @@ public class ProfilAkunResponse {
     public void setImagepath(String imagepath) {
         this.imagepath = imagepath;
     }
+
 }

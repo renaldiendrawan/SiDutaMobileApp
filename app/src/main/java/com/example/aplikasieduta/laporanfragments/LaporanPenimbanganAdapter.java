@@ -12,15 +12,17 @@ import com.example.aplikasieduta.R;
 import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganFragment;
 import com.example.aplikasieduta.jadwalfragments.JadwalPenimbanganModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LaporanPenimbanganAdapter extends RecyclerView.Adapter<com.example.aplikasieduta.laporanfragments.LaporanPenimbanganAdapter.RecycleViewHolder> {
 
-
     List<LaporanPenimbanganModel> items;
+    private List<LaporanPenimbanganModel> filteredItems;
 
     public LaporanPenimbanganAdapter(List<LaporanPenimbanganModel> itemList, LaporanPenimbanganFragment laporanPenimbanganFragment) {
         this.items = itemList;
+        this.filteredItems = new ArrayList<>(itemList);
     }
 
     @NonNull
@@ -41,13 +43,13 @@ public class LaporanPenimbanganAdapter extends RecyclerView.Adapter<com.example.
 
     @Override
     public int getItemCount() {
-        return (items != null)? items.size():0;
+        return (items != null) ? items.size() : 0;
     }
 
     public class RecycleViewHolder extends RecyclerView.ViewHolder {
         private TextView nama_anak, umur, tgl_penimbangan, berat_badan, tinggi_badan;
 
-        public RecycleViewHolder(View view){
+        public RecycleViewHolder(View view) {
             super(view);
             nama_anak = view.findViewById(R.id.LP_textnama);
             tgl_penimbangan = view.findViewById(R.id.LP_texttanggal);
@@ -55,5 +57,11 @@ public class LaporanPenimbanganAdapter extends RecyclerView.Adapter<com.example.
             tinggi_badan = view.findViewById(R.id.LP_texttinggi);
 
         }
+    }
+
+    public void setFilteredList(List<LaporanPenimbanganModel> filteredList) {
+        items.clear();
+        items.addAll(filteredList);
+        notifyDataSetChanged();
     }
 }

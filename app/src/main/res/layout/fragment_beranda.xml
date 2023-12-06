@@ -23,14 +23,6 @@
                 android:layout_height="130dp"
                 android:background="@color/primaryColor" />
 
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:backgroundTint="@color/primaryColor"-->
-            <!--                android:layout_alignParentRight="true"-->
-            <!--                android:layout_marginRight="18dp"-->
-            <!--                android:orientation="vertical">-->
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_image"
                 android:layout_width="50dp"
@@ -49,6 +41,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_person_outline"
                     tools:ignore="SpeakableTextPresentCheck" />
+
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -113,86 +106,94 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <GridLayout
+            <RelativeLayout
                 android:id="@+id/B_gl_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/B_txt_2"
                 android:layout_centerHorizontal="true"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="0dp"
-                android:columnCount="2"
-                android:rowCount="1">
+                android:layout_marginHorizontal="16dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/B_cv_1"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="15dp"
-                    app:cardCornerRadius="8dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/B_cv_1"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:layout_gravity="center"
-                        android:orientation="vertical">
+                        android:layout_margin="15dp"
+                        app:cardCornerRadius="8dp">
 
-                        <androidx.appcompat.widget.AppCompatImageButton
-                            android:id="@+id/B_img_1"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@android:color/transparent"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/jadwal"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Jadwal"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/B_img_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:background="@android:color/transparent"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/jadwal"
+                                tools:ignore="SpeakableTextPresentCheck" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/B_cv_2"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="15dp"
-                    app:cardCornerRadius="8dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="Jadwal"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/B_cv_2"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:layout_gravity="center"
-                        android:orientation="vertical">
+                        android:layout_margin="15dp"
+                        app:cardCornerRadius="8dp">
 
-                        <androidx.appcompat.widget.AppCompatImageButton
-                            android:id="@+id/B_img_2"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:background="@android:color/transparent"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/laporan"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/poppinsmedium"
-                            android:text="Laporan"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/B_img_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:background="@android:color/transparent"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/laporan"
+                                tools:ignore="SpeakableTextPresentCheck" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/poppinsmedium"
+                                android:text="Laporan"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/B_txt_3"
@@ -213,6 +214,9 @@
                 android:layout_below="@id/B_txt_3"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp" />
+
         </RelativeLayout>
+
     </FrameLayout>
+
 </ScrollView>

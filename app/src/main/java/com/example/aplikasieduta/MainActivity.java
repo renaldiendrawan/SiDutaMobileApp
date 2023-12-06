@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.aplikasieduta.RegisterActivity;
-import com.example.aplikasieduta.LoginActivity;
+
+import com.example.aplikasieduta.model.login.LoginActivity;
+import com.example.aplikasieduta.model.register.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.aplikasieduta;
+package com.example.aplikasieduta.model.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,16 +15,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.aplikasieduta.model.login.Login;
-import com.example.aplikasieduta.model.login.LoginData;
+import com.example.aplikasieduta.BerandaActivity;
+import com.example.aplikasieduta.model.LupaKataSandi.LupaKataSandiActivity;
+import com.example.aplikasieduta.MainActivity;
+import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.SessionManager;
+import com.example.aplikasieduta.model.register.RegisterActivity;
 import com.example.aplikasieduta.profilakun.DataShared;
 import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,8 +34,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextInputLayout textInputLayout;
-    TextInputEditText textInputEditText;
-    TextInputEditText L_edt_nik, L_inputkatasandi;
+    TextInputEditText textInputEditText, L_edt_nik, L_inputkatasandi;
     Button L_btn_1;
     String nik, katasandi;
     TextView L_txt_daftar;

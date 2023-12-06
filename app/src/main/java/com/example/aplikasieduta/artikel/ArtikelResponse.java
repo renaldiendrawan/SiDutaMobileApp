@@ -5,9 +5,7 @@ import java.util.ArrayList;
 public class ArtikelResponse {
 
     private String status;
-
     private String message;
-
     private ArrayList<ArtikelModel> data;
 
     public ArtikelResponse(String status, String message, ArrayList<ArtikelModel> data) {
@@ -39,4 +37,5 @@ public class ArtikelResponse {
     public void setData(ArrayList<ArtikelModel> data) {
         this.data = data;
     }
+
 }

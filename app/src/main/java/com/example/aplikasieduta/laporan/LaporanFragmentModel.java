@@ -1,18 +1,21 @@
-package com.example.aplikasieduta.laporanfragments;
+package com.example.aplikasieduta.laporan;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LaporanImunisasiModel {
+public class LaporanFragmentModel {
 
     @Expose
     @SerializedName("nama_anak")
     private String nama_anak;
-    private String umur;
+    @Expose
+    @SerializedName("tanggal_imunisasi")
     private String tanggal_imunisasi;
+    @Expose
+    @SerializedName("jenis_imunisasi")
     private String jenis_imunisasi;
 
-    public LaporanImunisasiModel(String nama_anak, String umur, String tanggal_imunisasi, String jenis_imunisasi) {
+    public LaporanFragmentModel(String nama_anak, String tanggal_imunisasi, String jenis_imunisasi) {
         this.nama_anak = nama_anak;
         this.tanggal_imunisasi = tanggal_imunisasi;
         this.jenis_imunisasi = jenis_imunisasi;

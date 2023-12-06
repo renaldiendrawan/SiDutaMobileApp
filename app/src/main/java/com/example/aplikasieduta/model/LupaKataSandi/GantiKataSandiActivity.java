@@ -1,4 +1,4 @@
-package com.example.aplikasieduta;
+package com.example.aplikasieduta.model.LupaKataSandi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.aplikasieduta.model.LupaKataSandi.Lupa_katasandi;
+import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.model.login.LoginActivity;
 import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.textfield.TextInputEditText;
@@ -36,7 +37,7 @@ public class GantiKataSandiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ganti_kata_sandi);
 
         SharedPreferences sharedPreferences = getSharedPreferences("register", Context.MODE_PRIVATE);
-        String email = sharedPreferences.getString("email","");
+        String email = sharedPreferences.getString("email", "");
 
         // Mendapatkan referensi ke tombol Back
         ImageButton backButton = findViewById(R.id.GKS_img_1);
@@ -115,34 +116,42 @@ public class GantiKataSandiActivity extends AppCompatActivity {
 
         Intent intent = null;
 
-        EditText password = findViewById(R.id.GKS_katasandiedit),
-                kode_otp = findViewById(R.id.LKS_kodeotpedit);
-
         Button konfirmasi = findViewById(R.id.GKS_btn_1);
 
-        konfirmasi.setOnClickListener(v->{
+        konfirmasi.setOnClickListener(v -> {
 
-            ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-            Call<Lupa_katasandi> lupaKatasandiCall = apiInterface.lupaKatasandi_ganti(email,
-                    kode_otp.getText().toString(),password.getText().toString());
-            lupaKatasandiCall.enqueue(new Callback<Lupa_katasandi>() {
-                @Override
-                public void onResponse(Call<Lupa_katasandi> call, Response<Lupa_katasandi> response) {
-                    if (response.body().isStatus() == true){
-                        Toast.makeText(GantiKataSandiActivity.this, "Kata Sandi Berhasil Diubah", Toast.LENGTH_SHORT).show();
-                        Intent buka = new Intent(GantiKataSandiActivity.this, LoginActivity.class);
-                        startActivity(buka);
-                    }else {
-                        Toast.makeText(GantiKataSandiActivity.this, "Kode OTP Salah", Toast.LENGTH_SHORT).show();
+            EditText password = findViewById(R.id.GKS_katasandiedit),
+                    konfirmasipassword = findViewById(R.id.GKS_konfirmasiedit),
+                    kode_otp = findViewById(R.id.LKS_kodeotpedit);
+
+            String txtkonfirmasi = konfirmasipassword.getText().toString();
+            String txtpassword = password.getText().toString();
+
+            if (!txtkonfirmasi.equalsIgnoreCase(txtpassword)) {
+                Toast.makeText(this, "Konfirmasi Kata Sandi Salah", Toast.LENGTH_SHORT).show();
+            } else {
+                ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+                Call<Lupa_katasandi> lupaKatasandiCall = apiInterface.lupaKatasandi_ganti(email,
+                        kode_otp.getText().toString(), password.getText().toString());
+                lupaKatasandiCall.enqueue(new Callback<Lupa_katasandi>() {
+                    @Override
+                    public void onResponse(Call<Lupa_katasandi> call, Response<Lupa_katasandi> response) {
+                        if (response.body().isStatus() == true) {
+                            Toast.makeText(GantiKataSandiActivity.this, "Kata Sandi Berhasil Diubah", Toast.LENGTH_SHORT).show();
+                            Intent buka = new Intent(GantiKataSandiActivity.this, LoginActivity.class);
+                            startActivity(buka);
+                        } else {
+                            Toast.makeText(GantiKataSandiActivity.this, "Kode OTP Salah", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<Lupa_katasandi> call, Throwable t) {
-                    Toast.makeText(GantiKataSandiActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("error", t.getMessage());
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Lupa_katasandi> call, Throwable t) {
+                        Toast.makeText(GantiKataSandiActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("error", t.getMessage());
+                    }
+                });
+            }
 
         });
     }

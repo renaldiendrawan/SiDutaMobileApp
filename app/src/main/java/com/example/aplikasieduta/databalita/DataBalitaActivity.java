@@ -6,8 +6,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -15,6 +17,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,11 +28,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.aplikasieduta.BerandaActivity;
 import com.example.aplikasieduta.R;
+import com.example.aplikasieduta.beranda.BerandaFragment;
 import com.example.aplikasieduta.profilakun.DataShared;
 import com.example.aplikasieduta.profilakun.ImageUtil;
 import com.example.aplikasieduta.profilakun.ProfilAkunResponse;
@@ -56,14 +61,8 @@ public class DataBalitaActivity extends AppCompatActivity {
     private String namaAnak, id;
     private DataShared dataShared;
     private int tahun, bulan, tanggal;
-    EditText DB_edt_tanggallahiranak;
-    EditText nama_anak;
-    EditText tanggal_lahir_anak;
+    EditText DB_edt_tanggallahiranak, nama_anak, tanggal_lahir_anak, bb_lahir, tb_lahir, nama_ayah, nama_ibu;
     Spinner jenis_kelamin;
-    EditText bb_lahir;
-    EditText tb_lahir;
-    EditText nama_ayah;
-    EditText nama_ibu;
     ImageView imageView;
     FloatingActionButton DB_floatingActionButton2;
     Bitmap bitmap;
@@ -93,18 +92,6 @@ public class DataBalitaActivity extends AppCompatActivity {
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, genderOptions);
         genderAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(genderAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedGender = genderOptions[position];
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                Toast.makeText(DataBalitaActivity.this, "Pilih Jenis Kelamin", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         DB_edt_tanggallahiranak = findViewById(R.id.DB_edt_tanggallahiranak);
         DB_edt_tanggallahiranak.setFocusableInTouchMode(false);
@@ -124,10 +111,17 @@ public class DataBalitaActivity extends AppCompatActivity {
                         bulan = month;
                         tanggal = dayOfMonth;
 
-                        DB_edt_tanggallahiranak.setText(tahun + "-" + bulan + "-" + tanggal);
+                        // Tambahkan 1 pada bulan sebelum menetapkan teks
+                        bulan += 1;
+
+                        // Format tanggal dengan menambahkan nol jika bulan atau tanggal < 10
+                        String formattedDate = String.format("%04d-%02d-%02d", tahun, bulan, tanggal);
+
+                        DB_edt_tanggallahiranak.setText(formattedDate);
                     }
                 }, tahun, bulan, tanggal);
                 dialog.show();
+
             }
         });
 
@@ -233,7 +227,13 @@ public class DataBalitaActivity extends AppCompatActivity {
                         if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                             ArrayList<DataBalitaModel> list = (ArrayList<DataBalitaModel>) response.body().getData();
                             if (list != null && !list.isEmpty()) {
+                                // Tentukan posisi default untuk Spinner Gender
+
+
                                 DataBalitaModel data = list.get(0);
+                                String genderValue = data.getJenis_kelamin();
+                                int genderPosition = getGenderPosition(genderValue);
+                                spinner.setSelection(genderPosition);
                                 nama_anak.setText(data.getNama_anak());
                                 tanggal_lahir_anak.setText(data.getTanggal_lahir_anak());
                                 bb_lahir.setText(data.getBb_lahir());
@@ -272,6 +272,50 @@ public class DataBalitaActivity extends AppCompatActivity {
                 String namaayah = nama_ayah.getText().toString();
                 String namaibu = nama_ibu.getText().toString();
 
+                // Penanganan setError untuk setiap widget input
+                if (TextUtils.isEmpty(namaanak)) {
+                    nama_anak.setError("Nama Lengkap Anak harus diisi");
+                    nama_anak.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(tanggallahiranak)) {
+                    tanggal_lahir_anak.setError("Tanggal Lahir Anak harus diisi!");
+                    tanggal_lahir_anak.requestFocus();
+                    return;
+                }
+
+                if (spinner.getSelectedItemPosition() == 0) {
+                    // Penanganan setError untuk Spinner
+                    ((TextView) spinner.getSelectedView()).setError("Pilih Jenis Kelamin Anak");
+                    spinner.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(bblahir)) {
+                    bb_lahir.setError("Berat Badan saat lahir harus diisi!");
+                    bb_lahir.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(tblahir)) {
+                    tb_lahir.setError("Tinggi Badan saat lahir harus diisi!");
+                    tb_lahir.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(namaayah)) {
+                    nama_ayah.setError("Nama Ayah harus diisi!");
+                    nama_ayah.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(namaibu)) {
+                    nama_ibu.setError("Nama Ibu harus diisi!");
+                    nama_ibu.requestFocus();
+                    return;
+                }
+
                 // Make Retrofit call to edit data
                 ApiClient.getClient().create(ApiInterface.class)
                         .editDataBalita(id, namaanak, tanggallahiranak, jeniskelamin, bblahir, tblahir, namaayah, namaibu, nikIbu)
@@ -279,16 +323,8 @@ public class DataBalitaActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<DataBalitaUpdateRespon> call, Response<DataBalitaUpdateRespon> response) {
                                 if (response.body().getStatus().equalsIgnoreCase("success")) {
-                                    Toast.makeText(DataBalitaActivity.this, "Data berhasil diedit", Toast.LENGTH_SHORT).show();
-
-                                    // Update data in SharedPreferences
-//                                    dataShared.setData(DataShared.KEY.ACC_NAMA_ANAK, namaanak);
-//                                    dataShared.setData(DataShared.KEY.ACC_TANGGAL_LAHIR_ANAK, tanggallahiranak);
-//                                    dataShared.setData(DataShared.KEY.ACC_JENIS_KELAMIN, jeniskelamin);
-//                                    dataShared.setData(DataShared.KEY.ACC_BB_LAHIR, bblahir);
-//                                    dataShared.setData(DataShared.KEY.ACC_TB_LAHIR, tblahir);
-//                                    dataShared.setData(DataShared.KEY.ACC_NAMA_AYAH, namaayah);
-//                                    dataShared.setData(DataShared.KEY.ACC_NAMA_IBU, namaibu);
+                                    Intent intent = new Intent(DataBalitaActivity.this, BerandaFragment.class).putExtra(BerandaActivity.FRAGMENT, R.layout.fragment_beranda);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(DataBalitaActivity.this, "Data gagal diedit", Toast.LENGTH_SHORT).show();
                                 }
@@ -326,6 +362,19 @@ public class DataBalitaActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private int getGenderPosition(String genderValue) {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.jenis_kelamin_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            if (adapter.getItem(i).toString().equalsIgnoreCase(genderValue)) {
+                return i;
+            }
+        }
+
+        return 0; // Posisi default jika tidak ditemukan
     }
 
     private class UploadImageTask extends AsyncTask<Uri, Void, Boolean> {

@@ -21,8 +21,6 @@ public class JadwalImunisasiAdapter extends RecyclerView.Adapter<JadwalImunisasi
 
     List<JadwalImunisasiModel> items;
 
-//    public JadwalImunisasiAdapter(ArrayList<JadwalImunisasiModel> items){this.items = items;}
-
     public JadwalImunisasiAdapter(List<JadwalImunisasiModel> itemList, JadwalImunisasiFragment jadwalImunisasiFragment) {
         this.items = itemList;
     }
@@ -45,13 +43,13 @@ public class JadwalImunisasiAdapter extends RecyclerView.Adapter<JadwalImunisasi
 
     @Override
     public int getItemCount() {
-        return (items != null)? items.size():0;
+        return (items != null) ? items.size() : 0;
     }
 
     public class RecycleViewHolder extends RecyclerView.ViewHolder {
         private TextView tanggal, jam, tempat, jenis;
 
-        public RecycleViewHolder(View view){
+        public RecycleViewHolder(View view) {
             super(view);
             tanggal = view.findViewById(R.id.JI_texttanggal);
             jam = view.findViewById(R.id.JI_textjam);

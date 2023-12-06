@@ -30,4 +30,5 @@ public class LaporanPenimbanganResponse {
     public void setData(ArrayList<LaporanPenimbanganModel> data) {
         this.data = data;
     }
+
 }

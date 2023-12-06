@@ -29,10 +29,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LaporanPenimbanganFragment extends Fragment {
+
     public static final String URLSELECT = "http://172.16.106.151/SiDutaMobile/selectlaporanpenimbangan.php";
 
     RecyclerView recyclerView;
     List<LaporanPenimbanganModel> itemList = new ArrayList<LaporanPenimbanganModel>();
+    List<LaporanPenimbanganModel> filteredItems = new ArrayList<>();
     LaporanPenimbanganAdapter laporanPenimbanganAdapter;
     String nama_anak, umur, tgl_penimbangan, berat_badan, tinggi_badan;
     FloatingActionButton fab;
@@ -46,27 +48,22 @@ public class LaporanPenimbanganFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_laporan_penimbangan, container, false);
+        view = inflater.inflate(R.layout.fragment_laporan_imunisasi, container, false);
+
         dataShared = new DataShared(requireContext());
-
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<LaporanPenimbanganResponse> call = apiInterface.ambillaporanpenimbangan(dataShared.getData(DataShared.KEY.ACC_NIK_IBU));
-
+        Call<LaporanPenimbanganResponse> call = apiInterface.ambillaporanpenimbangan(dataShared.getData(DataShared.KEY.ACC_NIK_IBU).toString());
 
         call.enqueue(new Callback<LaporanPenimbanganResponse>() {
             @Override
             public void onResponse(Call<LaporanPenimbanganResponse> call, Response<LaporanPenimbanganResponse> response) {
                 LaporanPenimbanganResponse respon = response.body();
+
                 if (response.isSuccessful()) {
-                    if (respon != null && respon.isSuccess() == true) {
-                        ArrayList<LaporanPenimbanganModel> list = respon.getData();
-                        if (list !=null && !list.isEmpty()) {
-                            LaporanPenimbanganModel model = response.body().getData().get(0);
-                            itemList.addAll(list);
-                            setRecyclerView();
-                        }
-                    } else if (respon.isSuccess() == false) {
-                        Toast.makeText(getContext(), "kode false", Toast.LENGTH_SHORT).show();
+
+                    if (respon.isSuccess()) {
+                        itemList.addAll(respon.getData());
+                        setRecyclerView();
                     } else {
                         Toast.makeText(requireContext(), "Data Kosong", Toast.LENGTH_SHORT).show();
                     }
@@ -79,20 +76,28 @@ public class LaporanPenimbanganFragment extends Fragment {
             }
         });
 
-
-
         return view;
     }
 
-    private void setRecyclerView(){
-        recyclerView = view.findViewById(R.id.recyclerview_laporanpenimbangan);
-        LaporanPenimbanganAdapter laporanPenimbanganAdapter1 = new LaporanPenimbanganAdapter(itemList, this);
-        Context context = requireContext();
+    public void filterData(String selectedNama) {
+        if (laporanPenimbanganAdapter != null) {
+            List<LaporanPenimbanganModel> filteredList = new ArrayList<>();
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+            for (LaporanPenimbanganModel model : itemList) {
+                if (model.getNama_anak().equalsIgnoreCase(selectedNama)) {
+                    filteredList.add(model);
+                }
+            }
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_laporanpenimbangan);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(laporanPenimbanganAdapter1);
+            // Set the filtered data to the adapter
+            laporanPenimbanganAdapter.setFilteredList(filteredList);
+        }
+    }
+
+    private void setRecyclerView() {
+        recyclerView = view.findViewById(R.id.recyclerview_laporanimunisasi);
+        laporanPenimbanganAdapter = new LaporanPenimbanganAdapter(filteredItems, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setAdapter(laporanPenimbanganAdapter);// Set the adapter to the RecyclerView here
     }
 }

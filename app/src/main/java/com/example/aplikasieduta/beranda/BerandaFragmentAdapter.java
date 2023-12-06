@@ -25,9 +25,8 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
     private ArrayList<DataBalitaModel> databalitaList;
     SharedPreferences sharedPreferences;
 
-    public BerandaFragmentAdapter(ArrayList<DataBalitaModel> databalitaList, Context context, OnClickListener listener){
+    public BerandaFragmentAdapter(ArrayList<DataBalitaModel> databalitaList, Context context, OnClickListener listener) {
         this.context = context;
-    // this.sharedPreferences = context.getActivity().getSharedPreferences("prefbalita", Context.MODE_PRIVATE);
         this.databalitaList = databalitaList;
         clickListener = listener;
     }
@@ -46,13 +45,13 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
         holder.textTanggallahiranak.setText(databalita.getTanggal_lahir_anak());
         holder.textJenisKelamin.setText(databalita.getJenis_kelamin());
 
-        if (holder.getAdapterPosition() != RecyclerView.NO_POSITION){
+        if (holder.getAdapterPosition() != RecyclerView.NO_POSITION) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (clickListener != null){
+                    if (clickListener != null) {
                         int position = holder.getPosition();
-                        if (position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             DataShared dataShared = new DataShared(context);
                             dataShared.setData(DataShared.KEY.BERANDA_ID, databalitaList.get(position).getNama_anak());
                             clickListener.onClick(position);
@@ -63,7 +62,7 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
         }
     }
 
-    public interface OnClickListener{
+    public interface OnClickListener {
 
         void onClick(int position);
 
@@ -71,7 +70,7 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
 
     @Override
     public int getItemCount() {
-        return (databalitaList != null) ? databalitaList.size() :0;
+        return (databalitaList != null) ? databalitaList.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -85,4 +84,3 @@ public class BerandaFragmentAdapter extends RecyclerView.Adapter<BerandaFragment
         }
     }
 }
-

@@ -1,5 +1,6 @@
 package com.example.aplikasieduta.retrofit;
 
+import com.example.aplikasieduta.jadwal.JadwalFragmentResponse;
 import com.example.aplikasieduta.pengaturanakun.PengaturanHapusAkunResponse;
 import com.example.aplikasieduta.artikel.ArtikelResponse;
 import com.example.aplikasieduta.databalita.DataBalitaResponse;
@@ -14,7 +15,6 @@ import com.example.aplikasieduta.model.login.Login;
 import com.example.aplikasieduta.model.register.Register;
 
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -37,6 +37,7 @@ public interface ApiInterface {
             @Field("nama_ibu") String nama_ibu,
             @Field("nik_ibu") String nik_ibu,
             @Field("tanggal_lahir") String tanggal_lahir,
+            @Field("nama_ayah") String nama_ayah,
             @Field("alamat") String alamat,
             @Field("email") String email,
             @Field("kata_sandi") String kata_sandi
@@ -56,11 +57,17 @@ public interface ApiInterface {
             @Field("kata_sandi") String kata_sandi
     );
 
-    @GET("selectjadwalpenimbangan.php")
-    Call<JadwalPenimbanganResponse> ambiljadwalpenimbangan();
+    @FormUrlEncoded
+    @POST("selectjadwalpenimbangan.php")
+    Call<JadwalPenimbanganResponse> ambiljadwalpenimbangan(
+            @Field("nik_ibu") String nama_anak
+    );
 
-    @GET("selectjadwalimunisasi.php")
-    Call<JadwalImunisasiResponse> ambiljadwalimunisasi();
+    @FormUrlEncoded
+    @POST("selectjadwalimunisasi.php")
+    Call<JadwalImunisasiResponse> ambiljadwalimunisasi(
+            @Field("nik_ibu") String nama_anak
+    );
 
     @FormUrlEncoded
     @POST("selectlaporanpenimbangan.php")
@@ -73,6 +80,13 @@ public interface ApiInterface {
     Call<LaporanImunisasiResponse> ambillaporanimunisasi(
             @Field("nik_ibu") String nama_anak
     );
+
+    @GET("pilihjadwalimunisasi.php")
+    Call<JadwalFragmentResponse> pilihanakjadwal(
+    );
+
+    @GET("pilihlaporanimunisasi.php")
+    Call<LaporanImunisasiResponse> pilihanaklaporan();
 
     @GET("databalita.php")
     Call<DataBalitaResponse> ambildatabalita(
@@ -153,5 +167,4 @@ public interface ApiInterface {
     Call<PengaturanHapusAkunResponse> deleteAccount(
             @Field("nik_ibu") String nik_ibu
     );
-
 }

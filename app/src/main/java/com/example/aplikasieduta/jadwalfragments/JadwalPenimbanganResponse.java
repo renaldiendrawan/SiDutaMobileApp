@@ -1,10 +1,13 @@
 package com.example.aplikasieduta.jadwalfragments;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class JadwalPenimbanganResponse {
     private boolean success;
     String message;
+    @SerializedName("data")
     ArrayList<JadwalPenimbanganModel> data;
 
     public boolean isSuccess() {
@@ -30,4 +33,5 @@ public class JadwalPenimbanganResponse {
     public void setData(ArrayList<JadwalPenimbanganModel> data) {
         this.data = data;
     }
+
 }

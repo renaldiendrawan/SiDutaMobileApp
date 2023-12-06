@@ -115,4 +115,5 @@ public class DataBalitaModel {
     public void setImagepath(String imagepath) {
         this.imagepath = imagepath;
     }
+
 }

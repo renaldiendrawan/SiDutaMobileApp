@@ -1,6 +1,7 @@
 package com.example.aplikasieduta.beranda;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,11 +42,12 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
 
         ArtikelModel viewPagerItem = viewPagerItemArrayList.get(position);
 
-//        holder.imageView.setImageResource(viewPagerItem.imageID);
         holder.judulartikel.setText(viewPagerItem.judul_artikel);
 
+        Log.e("error", viewPagerItem.img_path);
+
         Glide.with(holder.itemView)
-                .load(ApiClient.PHOTO_URL_ARTIKEL + viewPagerItem.getImg_artikel() + viewPagerItem.img_artikel)
+                .load("https://si-duta.tifnganjuk.com/forms/berkas/" + viewPagerItem.img_path)
                 .placeholder(R.drawable.ic_person1)
                 .into(holder.imageView);
 
@@ -65,7 +67,7 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         return viewPagerItemArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView judulartikel;
@@ -78,5 +80,4 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
 
         }
     }
-
 }

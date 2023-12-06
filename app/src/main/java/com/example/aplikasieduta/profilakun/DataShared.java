@@ -10,48 +10,46 @@ import java.util.HashMap;
 public class DataShared {
 
     private final SharedPreferences sharedPrefs;
-
     private final SharedPreferences.Editor sharedEditor;
-
     public static final String NAME = "com.eduta.PREFERENCES";
 
-    public DataShared(Context context){
+    public DataShared(Context context) {
 
         // membuat object sharedpreferences
         this.sharedPrefs = context.getSharedPreferences(DataShared.NAME, Context.MODE_PRIVATE);
         this.sharedEditor = this.sharedPrefs.edit();
     }
 
-    public boolean contains(@NonNull KEY key){
+    public boolean contains(@NonNull KEY key) {
         return this.sharedPrefs.contains(key.name());
     }
 
-    public String getData(@NonNull KEY key){
+    public String getData(@NonNull KEY key) {
         return this.sharedPrefs.getString(key.name(), null);
     }
 
-    public HashMap<KEY, String> getData(@NonNull KEY... keys){
+    public HashMap<KEY, String> getData(@NonNull KEY... keys) {
         HashMap<KEY, String> data = new HashMap<>();
-        for (KEY key : keys){
-            if (contains(key)){
+        for (KEY key : keys) {
+            if (contains(key)) {
                 data.put(key, getData(key));
-            }else {
+            } else {
                 data.put(key, "null");
             }
         }
         return data;
     }
 
-    public void setData(@NonNull KEY key, @NonNull String value){
+    public void setData(@NonNull KEY key, @NonNull String value) {
         this.sharedEditor.putString(key.name(), value).apply();
     }
 
-    public void setNullData(@NonNull KEY key){
+    public void setNullData(@NonNull KEY key) {
         this.setData(key, "");
     }
 
     @Deprecated
-    public void remove(@NonNull KEY key){
+    public void remove(@NonNull KEY key) {
         this.sharedEditor.remove(key.name()).apply();
     }
 
@@ -70,6 +68,7 @@ public class DataShared {
         ACC_BB_LAHIR,
         ACC_TB_LAHIR,
         ACC_NAMA_AYAH,
-        ACC_FOTO_ANAK_
+        ACC_FOTO_ANAK,
+        ANAK,
     }
 }

@@ -1,10 +1,16 @@
 package com.example.aplikasieduta.laporanfragments;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class LaporanImunisasiResponse {
     private boolean success;
     String message;
+
+    @Expose
+    @SerializedName("data")
     ArrayList<LaporanImunisasiModel> data;
 
     public boolean isSuccess() {
@@ -30,4 +36,5 @@ public class LaporanImunisasiResponse {
     public void setData(ArrayList<LaporanImunisasiModel> data) {
         this.data = data;
     }
+
 }

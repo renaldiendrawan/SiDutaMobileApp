@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
@@ -30,6 +32,7 @@ public class LaporanImunisasiFragment extends Fragment {
 
     RecyclerView recyclerView;
     List<LaporanImunisasiModel> itemList = new ArrayList<LaporanImunisasiModel>();
+    List<LaporanImunisasiModel> filteredItems = new ArrayList<>();
     LaporanImunisasiAdapter laporanImunisasiAdapter;
     String nama_anak, umur, tanggal_imunisasi, jenis_imunisasi;
     FloatingActionButton fab;
@@ -45,6 +48,7 @@ public class LaporanImunisasiFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_laporan_imunisasi, container, false);
 
         dataShared = new DataShared(requireContext());
+
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<LaporanImunisasiResponse> call = apiInterface.ambillaporanimunisasi(dataShared.getData(DataShared.KEY.ACC_NIK_IBU).toString());
 
@@ -52,18 +56,11 @@ public class LaporanImunisasiFragment extends Fragment {
             @Override
             public void onResponse(Call<LaporanImunisasiResponse> call, Response<LaporanImunisasiResponse> response) {
                 LaporanImunisasiResponse respon = response.body();
-
                 if (response.isSuccessful()) {
-                    if (respon != null && respon.isSuccess() == true) {
-                        ArrayList<LaporanImunisasiModel> list = respon.getData();
-                        if (list !=null && !list.isEmpty()) {
-                            LaporanImunisasiModel model = response.body().getData().get(0);
-                            itemList.addAll(list);
-                            itemList = list;
-                            setRecyclerView();
-                        }
-                    } else if (respon.isSuccess() == false) {
-                        Toast.makeText(getContext(), "kosong", Toast.LENGTH_SHORT).show();
+
+                    if (respon.isSuccess()) {
+                        itemList.addAll(respon.getData());
+                        setRecyclerView();
                     } else {
                         Toast.makeText(requireContext(), "Data Kosong", Toast.LENGTH_SHORT).show();
                     }
@@ -76,20 +73,28 @@ public class LaporanImunisasiFragment extends Fragment {
             }
         });
 
-
-
         return view;
     }
 
-    private void setRecyclerView(){
+    public void filterData(String selectedNama) {
+        if (laporanImunisasiAdapter != null) {
+            List<LaporanImunisasiModel> filteredList = new ArrayList<>();
+
+            for (LaporanImunisasiModel model : itemList) {
+                if (model.getNama_anak().equalsIgnoreCase(selectedNama)) {
+                    filteredList.add(model);
+                }
+            }
+
+            // Set the filtered data to the adapter
+            laporanImunisasiAdapter.setFilteredList(filteredList);
+        }
+    }
+
+    private void setRecyclerView() {
         recyclerView = view.findViewById(R.id.recyclerview_laporanimunisasi);
-        laporanImunisasiAdapter = new LaporanImunisasiAdapter(itemList, this);
-        Context context = requireContext();
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_laporanimunisasi);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(laporanImunisasiAdapter);
+        laporanImunisasiAdapter = new LaporanImunisasiAdapter(filteredItems, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setAdapter(laporanImunisasiAdapter);// Set the adapter to the RecyclerView here
     }
 }

@@ -30,4 +30,5 @@ public class JadwalImunisasiResponse {
     public void setData(ArrayList<JadwalImunisasiModel> data) {
         this.data = data;
     }
+
 }

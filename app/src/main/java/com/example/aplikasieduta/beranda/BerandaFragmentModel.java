@@ -30,20 +30,10 @@ public class BerandaFragmentModel {
         this.jenis_kelamin = jenis_kelamin;
     }
 
-//    public String getUsia() {
-//        return usia;
-//    }
-//
-//    public void setUsia(String usia) {
-//        this.usia = usia;
-//    }
-
     public BerandaFragmentModel(String nama_anak, String tanggal_lahir_anak, String jenis_kelamin, String usia) {
         this.nama_anak = nama_anak;
         this.tanggal_lahir_anak = tanggal_lahir_anak;
         this.jenis_kelamin = jenis_kelamin;
-//        this.usia = usia;
     }
 
-//    private String usia;
 }

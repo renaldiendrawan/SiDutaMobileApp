@@ -68,7 +68,9 @@
                 android:text="Jadwal Penimbangan di Kelurahan Kauman, diharapkan kepada ibu yang mempunyai balita untuk datang di lokasi Posyandu"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+
         </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

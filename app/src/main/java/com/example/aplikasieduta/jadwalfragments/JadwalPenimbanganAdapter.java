@@ -19,10 +19,7 @@ import java.util.zip.Inflater;
 
 public class JadwalPenimbanganAdapter extends RecyclerView.Adapter<JadwalPenimbanganAdapter.RecycleViewHolder> {
 
-
     List<JadwalPenimbanganModel> items;
-
-//    public JadwalPenimbanganAdapter(ArrayList<JadwalPenimbanganModel> items){this.items = items;}
 
     public JadwalPenimbanganAdapter(List<JadwalPenimbanganModel> itemList, JadwalPenimbanganFragment jadwalPenimbanganFragment) {
         this.items = itemList;
@@ -32,7 +29,7 @@ public class JadwalPenimbanganAdapter extends RecyclerView.Adapter<JadwalPenimba
     @Override
     public JadwalPenimbanganAdapter.RecycleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_jadwal_penimbangan, parent, false);
-                return new RecycleViewHolder(view);
+        return new JadwalPenimbanganAdapter.RecycleViewHolder(view);
     }
 
     @Override
@@ -46,18 +43,18 @@ public class JadwalPenimbanganAdapter extends RecyclerView.Adapter<JadwalPenimba
 
     @Override
     public int getItemCount() {
-        return (items != null)? items.size():0;
+        return (items != null) ? items.size() : 0;
     }
 
     public class RecycleViewHolder extends RecyclerView.ViewHolder {
-         private TextView tanggal, jam, tempat;
+        private TextView tanggal, jam, tempat;
 
-         public RecycleViewHolder(View view){
-             super(view);
-             tanggal = view.findViewById(R.id.JP_texttanggal);
-             jam = view.findViewById(R.id.JP_textjam);
-             tempat = view.findViewById(R.id.JP_texttempat);
+        public RecycleViewHolder(View view) {
+            super(view);
+            tanggal = view.findViewById(R.id.JP_texttanggal);
+            jam = view.findViewById(R.id.JP_textjam);
+            tempat = view.findViewById(R.id.JP_texttempat);
 
-         }
+        }
     }
 }

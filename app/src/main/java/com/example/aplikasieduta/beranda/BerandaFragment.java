@@ -1,10 +1,10 @@
 package com.example.aplikasieduta.beranda;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +24,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
 import com.example.aplikasieduta.AkunActivity;
 import com.example.aplikasieduta.BerandaActivity;
+import com.example.aplikasieduta.artikel.ArtikelModel;
 import com.example.aplikasieduta.artikel.ArtikelResponse;
 import com.example.aplikasieduta.databalita.DataBalitaActivity;
-import com.example.aplikasieduta.LoginActivity;
+import com.example.aplikasieduta.model.login.LoginActivity;
 import com.example.aplikasieduta.R;
 import com.example.aplikasieduta.SessionManager;
 import com.example.aplikasieduta.databalita.DataBalitaModel;
@@ -40,12 +41,11 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class BerandaFragment extends Fragment {
 
     SessionManager sessionManager;
-    TextView B_txt_5;
+    TextView B_txt_5, judulArtikel;
     ImageButton imunisasi;
     String nama_ibu;
     private RecyclerView recyclerView;
@@ -54,8 +54,16 @@ public class BerandaFragment extends Fragment {
     private ArrayList<DataBalitaModel> databalitaList;
     ViewPager2 viewPager2;
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
+    private String urlimage;
+    private String dataId;
+    ImageView gambarArtikel;
 
-    @SuppressLint("MissingInflatedId")
+    private void geturlimage() {
+        ApiClient retrofit = new ApiClient();
+        String link = retrofit.ip;
+        link = urlimage;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_beranda, container, false);
@@ -99,9 +107,8 @@ public class BerandaFragment extends Fragment {
                             databalitaList = response.body().getData();
                             setRecyclerView();
                         } else {
-                            Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
 
+                        }
                     }
 
                     @Override
@@ -139,7 +146,7 @@ public class BerandaFragment extends Fragment {
         ApiClient.getClient().create(ApiInterface.class).artikel().enqueue(new Callback<ArtikelResponse>() {
             @Override
             public void onResponse(Call<ArtikelResponse> call, Response<ArtikelResponse> response) {
-                if (response.body().getStatus().equalsIgnoreCase("success")){
+                if (response.body().getStatus().equalsIgnoreCase("success")) {
                     ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(response.body().getData());
 
                     viewPager2.setAdapter(viewPagerAdapter);
@@ -157,7 +164,34 @@ public class BerandaFragment extends Fragment {
             }
         });
 
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<ArtikelResponse> call = apiInterface.detailartikel(dataId);
 
+        call.enqueue(new Callback<ArtikelResponse>() {
+            @Override
+            public void onResponse(Call<ArtikelResponse> call, Response<ArtikelResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
+                    ArtikelModel model = response.body().getData().get(0);
+
+                    geturlimage();
+
+                    // Menggunakan Glide untuk memuat gambar
+                    Glide.with(requireContext())
+                            .load("https://si-duta.tifnganjuk.com/forms/berkas/" + model.img_path)
+                            .into(gambarArtikel);
+
+                    judulArtikel.setText(model.judul_artikel);
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArtikelResponse> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
         imunisasi = rootView.findViewById(R.id.B_img_1);
         imunisasi.setOnClickListener(v -> {
@@ -214,6 +248,7 @@ public class BerandaFragment extends Fragment {
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
+
         } else {
             Toast.makeText(requireContext(), "Data Anak Kosong", Toast.LENGTH_SHORT).show();
         }

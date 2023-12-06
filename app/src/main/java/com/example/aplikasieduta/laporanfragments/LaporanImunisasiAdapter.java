@@ -20,9 +20,11 @@ import java.util.zip.Inflater;
 public class LaporanImunisasiAdapter extends RecyclerView.Adapter<LaporanImunisasiAdapter.RecycleViewHolder> {
 
     List<LaporanImunisasiModel> items;
+    private List<LaporanImunisasiModel> filteredItems;
 
     public LaporanImunisasiAdapter(List<LaporanImunisasiModel> itemList, LaporanImunisasiFragment laporanImunisasiFragment) {
         this.items = itemList;
+        this.filteredItems = new ArrayList<>(itemList);
     }
 
     @NonNull
@@ -42,17 +44,23 @@ public class LaporanImunisasiAdapter extends RecyclerView.Adapter<LaporanImunisa
 
     @Override
     public int getItemCount() {
-        return (items != null)? items.size():0;
+        return (items != null) ? items.size() : 0;
     }
 
     public class RecycleViewHolder extends RecyclerView.ViewHolder {
         private TextView nama_anak, umur, tanggal_imunisasi, jenis_imunisasi;
 
-        public RecycleViewHolder(View view){
+        public RecycleViewHolder(View view) {
             super(view);
             nama_anak = view.findViewById(R.id.LI_textnama);
             tanggal_imunisasi = view.findViewById(R.id.LI_texttanggal);
             jenis_imunisasi = view.findViewById(R.id.LI_textjenis);
         }
+    }
+
+    public void setFilteredList(List<LaporanImunisasiModel> filteredList) {
+        items.clear();
+        items.addAll(filteredList);
+        notifyDataSetChanged();
     }
 }

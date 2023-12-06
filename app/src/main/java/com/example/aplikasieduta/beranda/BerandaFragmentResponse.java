@@ -3,6 +3,7 @@ package com.example.aplikasieduta.beranda;
 import java.util.ArrayList;
 
 public class BerandaFragmentResponse {
+
     private boolean success;
     String message;
     ArrayList<BerandaFragmentModel> data;
@@ -30,4 +31,5 @@ public class BerandaFragmentResponse {
     public void setData(ArrayList<BerandaFragmentModel> data) {
         this.data = data;
     }
+
 }

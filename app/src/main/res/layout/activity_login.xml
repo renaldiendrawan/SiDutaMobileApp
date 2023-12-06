@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".model.login.LoginActivity">
 
     <ImageButton
         android:id="@+id/L_img_1"
@@ -50,12 +50,13 @@
                 android:background="@drawable/button_shape"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/poppinsmedium"
-                android:hint="NIK Orang Tua"
+                android:hint="NIK Ibu"
                 android:inputType="number"
                 android:paddingLeft="10dp"
                 android:textColorHint="@color/grey"
                 android:textSize="15dp"
                 tools:ignore="TextSizeCheck" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +90,9 @@
                 android:textSize="15sp"
                 android:typeface="normal"
                 tools:ignore="TextSizeCheck" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <TextView
@@ -142,6 +145,7 @@
             android:text=" Daftar"
             android:textColor="@color/primaryColor"
             android:textSize="15sp" />
+
     </LinearLayout>
 
 </RelativeLayout>

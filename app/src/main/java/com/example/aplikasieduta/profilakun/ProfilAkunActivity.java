@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,10 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.aplikasieduta.AkunActivity;
+import com.example.aplikasieduta.BerandaActivity;
 import com.example.aplikasieduta.R;
-import com.example.aplikasieduta.RegisterActivity;
-import com.example.aplikasieduta.jadwalfragments.JadwalImunisasiModel;
-import com.example.aplikasieduta.jadwalfragments.JadwalImunisasiResponse;
 import com.example.aplikasieduta.retrofit.ApiClient;
 import com.example.aplikasieduta.retrofit.ApiInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,7 +40,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -130,7 +128,7 @@ public class ProfilAkunActivity extends AppCompatActivity {
                                         .enqueue(new Callback<ProfilAkunResponse>() {
                                             @Override
                                             public void onResponse(Call<ProfilAkunResponse> call, Response<ProfilAkunResponse> response) {
-                                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
+                                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
                                                     Toast.makeText(ProfilAkunActivity.this, "Update Foto Berhasil", Toast.LENGTH_SHORT).show();
 
                                                     dataShared.setData(DataShared.KEY.ACC_IMAGE, response.body().getImagepath());
@@ -140,7 +138,7 @@ public class ProfilAkunActivity extends AppCompatActivity {
                                                             .placeholder(R.drawable.ic_person1)
                                                             .into(imageView);
 
-                                                }else {
+                                                } else {
                                                     Toast.makeText(ProfilAkunActivity.this, "Update Foto Gagal", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
@@ -236,6 +234,43 @@ public class ProfilAkunActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String namaibu = nama_ibu.getText().toString();
+                String nikibu = nik_ibu.getText().toString();
+                String tanggallahir = tanggal_lahir.getText().toString();
+                String Alamat = alamat.getText().toString();
+                String Email = email.getText().toString();
+
+                // Penanganan setError untuk setiap widget input
+                if (TextUtils.isEmpty(namaibu)) {
+                    nama_ibu.setError("Nama Lengkap Orang Tua harus diisi");
+                    nama_ibu.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(nikibu)) {
+                    nik_ibu.setError("NIK Orang Tua harus diisi!");
+                    nik_ibu.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(tanggallahir)) {
+                    tanggal_lahir.setError("Tanggal Lahir Orang Tua harus diisi");
+                    tanggal_lahir.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(Alamat)) {
+                    alamat.setError("Alamat harus diisi");
+                    alamat.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(Email)) {
+                    email.setError("Email harus diisi");
+                    email.requestFocus();
+                    return;
+                }
+
                 ApiClient.getClient().create(ApiInterface.class)
                         .editAkun(
                                 dataShared.getData(DataShared.KEY.ACC_NIK_IBU),
@@ -248,8 +283,7 @@ public class ProfilAkunActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<ProfilAkunResponse> call, Response<ProfilAkunResponse> response) {
 
-                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")){
-                                    Toast.makeText(ProfilAkunActivity.this, "Data berhasil diedit", Toast.LENGTH_SHORT).show();
+                                if (response.body() != null && response.body().getStatus().equalsIgnoreCase("success")) {
 
                                     dataShared.setData(DataShared.KEY.ACC_NIK_IBU, nik_ibu.getText().toString());
                                     dataShared.setData(DataShared.KEY.ACC_NAMA_IBU, nama_ibu.getText().toString());
@@ -257,8 +291,9 @@ public class ProfilAkunActivity extends AppCompatActivity {
                                     dataShared.setData(DataShared.KEY.ACC_TANGGAL_LAHIR, tanggal_lahir.getText().toString());
                                     dataShared.setData(DataShared.KEY.ACC_EMAIL, email.getText().toString());
 
-                                }else {
-                                    Toast.makeText(ProfilAkunActivity.this, "Data gagal diedit", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(ProfilAkunActivity.this, BerandaActivity.class));
+                                } else {
+                                    Toast.makeText(ProfilAkunActivity.this, "Data Gagal Diubah", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -278,7 +313,7 @@ public class ProfilAkunActivity extends AppCompatActivity {
             Uri selectedImageUri = uris[0];
             try {
 
-                URL url = new URL("http://172.16.106.49/SiDuta/SiDutaMobile/profilakun.php");
+                URL url = new URL("http://172.16.106.121/SiDuta/SiDutaMobile/profilakun.php");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
 

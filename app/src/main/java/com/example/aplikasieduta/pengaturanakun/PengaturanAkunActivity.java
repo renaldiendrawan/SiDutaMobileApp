@@ -1,7 +1,6 @@
 package com.example.aplikasieduta.pengaturanakun;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aplikasieduta.AkunActivity;
-import com.example.aplikasieduta.LoginActivity;
+import com.example.aplikasieduta.model.login.LoginActivity;
 import com.example.aplikasieduta.MainActivity;
 import com.example.aplikasieduta.R;
 import com.example.aplikasieduta.SessionManager;
@@ -40,7 +39,7 @@ public class PengaturanAkunActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pengaturan_akun);
 
         DataShared shared = new DataShared(this);
-         nik_ibu = shared.getData(DataShared.KEY.ACC_NIK_IBU);
+        nik_ibu = shared.getData(DataShared.KEY.ACC_NIK_IBU);
         // Mendapatkan referensi ke tombol Back
         ImageButton backButton = findViewById(R.id.PG_img_1);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -133,22 +132,20 @@ public class PengaturanAkunActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<PengaturanHapusAkunResponse> call, Response<PengaturanHapusAkunResponse> response) {
 
-                    if (response.body().getStatus().toLowerCase().equalsIgnoreCase("success")) {
-                        // Penghapusan akun berhasil, pindahkan pengguna ke halaman MainActivity
-                        runOnUiThread(() -> {
-                            startActivity(new Intent(PengaturanAkunActivity.this, MainActivity.class));
-                        });
-                    } else {
-                        // Penghapusan akun gagal, tampilkan pesan kesalahan atau ambil informasi dari response
-                        Toast.makeText(PengaturanAkunActivity.this, "Gagal menghapus akun", Toast.LENGTH_SHORT).show();
-                    }
+                if (response.body().getStatus().toLowerCase().equalsIgnoreCase("success")) {
+                    // Penghapusan akun berhasil, pindahkan pengguna ke halaman MainActivity
+                    runOnUiThread(() -> {
+                        startActivity(new Intent(PengaturanAkunActivity.this, MainActivity.class));
+                    });
+                } else {
+                    // Penghapusan akun gagal, tampilkan pesan kesalahan atau ambil informasi dari response
+                    Toast.makeText(PengaturanAkunActivity.this, "Gagal menghapus akun", Toast.LENGTH_SHORT).show();
+                }
 
             }
 
             @Override
             public void onFailure(Call<PengaturanHapusAkunResponse> call, Throwable t) {
-                // Kesalahan jaringan atau kesalahan lainnya
-//                Toast.makeText(PengaturanAkunActivity.this, "Terjadi kesalahan: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("error pada hapus akun", t.getMessage());
             }
         });
@@ -171,5 +168,4 @@ public class PengaturanAkunActivity extends AppCompatActivity {
                 });
         builder.create().show();
     }
-
 }

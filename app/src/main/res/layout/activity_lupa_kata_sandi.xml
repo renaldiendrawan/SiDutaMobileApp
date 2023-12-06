@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LupaKataSandiActivity">
+    tools:context=".model.LupaKataSandi.LupaKataSandiActivity">
 
     <ImageButton
         android:id="@+id/LKS_btn_back"
@@ -91,7 +91,9 @@
                 android:textColorHint="@color/grey"
                 android:textSize="15dp"
                 tools:ignore="TextSizeCheck" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <Button
@@ -107,14 +109,5 @@
         android:text="Kirim Kode OTP"
         android:textColor="@color/white"
         android:textSize="18sp" />
-
-    <!--    <ProgressBar-->
-    <!--        android:id="@+id/LKS_progresssbar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:visibility="invisible"-->
-    <!--        android:layout_below="@id/LKS_btn_kodeotp"-->
-    <!--        android:layout_marginTop="20dp"/>-->
-
 
 </RelativeLayout>

@@ -1,194 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GantiKataSandiActivity">
+    tools:context=".model.LupaKataSandi.GantiKataSandiActivity">
 
-    <ImageButton
-        android:id="@+id/GKS_img_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_back"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/GKS_txt_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/GKS_img_1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="Ganti Kata Sandi"
-        android:textColor="@color/black"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/GKS_text2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/GKS_txt_1"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="Kode OTP"
-        android:textColor="@color/black"
-        android:textSize="17dp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/GKS_text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/GKS_text2"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="Kami telah mengirimkan Kode OTP ke alamat Email anda"
-        android:textColor="@color/grey"
-        android:textSize="14dp"
-        tools:ignore="TextSizeCheck" />
+        <ImageButton
+            android:id="@+id/GKS_img_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <LinearLayout
-        android:id="@+id/GKS_layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/GKS_text3"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical"
-        android:padding="30dp">
+        <TextView
+            android:id="@+id/GKS_txt_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GKS_img_1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Ganti Kata Sandi"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/LKS_kodeotplayout"
+        <TextView
+            android:id="@+id/GKS_text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_kodeotp"
-            app:startIconTint="@color/grey">
+            android:layout_below="@id/GKS_txt_1"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Kode OTP"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/LKS_kodeotpedit"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Kode OTP"
-                android:inputType="number"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/GKS_text4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/GKS_layout2"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:fontFamily="@font/poppinsmedium"
-        android:text="Masukkan Kata Sandi Baru Anda"
-        android:textColor="@color/grey"
-        android:textSize="14dp"
-        tools:ignore="TextSizeCheck" />
-
-    <LinearLayout
-        android:id="@+id/GKS_ly_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/GKS_text4"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical"
-        android:padding="30dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/GKS_katasandilayout"
+        <TextView
+            android:id="@+id/GKS_text3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/GKS_text2"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:endIconMode="password_toggle"
-            app:endIconTint="@color/grey"
-            app:helperText="Masukkan Kata Sandi"
-            app:helperTextEnabled="true"
-            app:helperTextTextColor="@color/primaryColor"
-            app:startIconDrawable="@drawable/ic_lock"
-            app:startIconTint="@color/grey">
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Kami telah mengirimkan Kode OTP ke alamat Email anda"
+            android:textColor="@color/grey"
+            android:textSize="14dp"
+            tools:ignore="TextSizeCheck" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/GKS_katasandiedit"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:ems="15"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Kata Sandi Baru"
-                android:inputType="textPassword"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15sp"
-                android:typeface="normal"
-                tools:ignore="TextSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/GKS_konfirmasilayout"
+        <LinearLayout
+            android:id="@+id/GKS_layout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:endIconMode="password_toggle"
-            app:endIconTint="@color/grey"
-            app:helperText="Masukkan Kata Sandi"
-            app:helperTextEnabled="true"
-            app:helperTextTextColor="@color/primaryColor"
-            app:startIconDrawable="@drawable/ic_lock_open"
-            app:startIconTint="@color/grey">
+            android:layout_below="@+id/GKS_text3"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical"
+            android:padding="30dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/GKS_konfirmasiedit"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/LKS_kodeotplayout"
                 android:layout_width="match_parent"
-                android:layout_height="57dp"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_kodeotp"
+                app:startIconTint="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/LKS_kodeotpedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Kode OTP"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15dp"
+                    tools:ignore="TextSizeCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/GKS_text4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/GKS_layout2"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/poppinsmedium"
+            android:text="Masukkan Kata Sandi Baru Anda"
+            android:textColor="@color/grey"
+            android:textSize="14dp"
+            tools:ignore="TextSizeCheck" />
+
+        <LinearLayout
+            android:id="@+id/GKS_ly_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GKS_text4"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/GKS_katasandilayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:ems="15"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="Konfirmasi Kata Sandi Baru"
-                android:inputType="textPassword"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/grey"
-                android:textSize="15sp"
-                android:typeface="normal"
-                tools:ignore="TextSizeCheck" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey"
+                app:helperText="Masukkan Kata Sandi"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/primaryColor"
+                app:startIconDrawable="@drawable/ic_lock"
+                app:startIconTint="@color/grey">
 
-    <Button
-        android:id="@+id/GKS_btn_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/GKS_ly_1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:width="300dp"
-        android:background="@drawable/button_shape"
-        android:fontFamily="@font/poppinssemibold"
-        android:text="Konfirmasi"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/GKS_katasandiedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:ems="15"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Kata Sandi Baru"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp"
+                    android:typeface="normal"
+                    tools:ignore="TextSizeCheck" />
 
-</RelativeLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/GKS_konfirmasilayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey"
+                app:helperText="Masukkan Kata Sandi"
+                app:helperTextEnabled="true"
+                app:helperTextTextColor="@color/primaryColor"
+                app:startIconDrawable="@drawable/ic_lock_open"
+                app:startIconTint="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/GKS_konfirmasiedit"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_shape"
+                    android:backgroundTint="@color/white"
+                    android:ems="15"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:hint="Konfirmasi Kata Sandi Baru"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp"
+                    android:typeface="normal"
+                    tools:ignore="TextSizeCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/GKS_btn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/GKS_ly_1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:width="300dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinssemibold"
+            android:text="Konfirmasi"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,4 +1,5 @@
 package com.example.aplikasieduta;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -6,6 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.aplikasieduta.beranda.BerandaFragment;
+import com.example.aplikasieduta.jadwal.JadwalFragment;
+import com.example.aplikasieduta.laporan.LaporanFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BerandaActivity extends AppCompatActivity {
@@ -23,7 +26,7 @@ public class BerandaActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected( MenuItem menuItem) {
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
                 Fragment selectedFragment = null;
 
                 if (menuItem.getItemId() == R.id.beranda) {
@@ -32,6 +35,8 @@ public class BerandaActivity extends AppCompatActivity {
                     selectedFragment = new JadwalFragment();
                 } else if (menuItem.getItemId() == R.id.laporan) {
                     selectedFragment = new LaporanFragment();
+                } else {
+                    selectedFragment = new BerandaFragment();
                 }
 
                 if (selectedFragment != null) {
@@ -47,19 +52,18 @@ public class BerandaActivity extends AppCompatActivity {
                 .replace(R.id.flFragment, new BerandaFragment())
                 .commit();
 
-        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT,0) == R.layout.fragment_jadwal){
+        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT, 0) == R.layout.fragment_jadwal) {
             bottomNavigationView.setSelectedItemId(R.id.jadwal);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.flFragment,new JadwalFragment())
+                    .replace(R.id.flFragment, new JadwalFragment())
                     .commit();
         }
 
-        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT,0) == R.layout.fragment_laporan){
+        if (getIntent().getIntExtra(BerandaActivity.FRAGMENT, 0) == R.layout.fragment_laporan) {
             bottomNavigationView.setSelectedItemId(R.id.laporan);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.flFragment,new LaporanFragment())
+                    .replace(R.id.flFragment, new LaporanFragment())
                     .commit();
         }
     }
 }
-

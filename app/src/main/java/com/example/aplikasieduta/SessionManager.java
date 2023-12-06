@@ -17,7 +17,7 @@ public class SessionManager {
     public static final String IS_LOGGED_IN = "isLoggedIn";
     public static final String NAMA_IBU = "nama_ibu";
 
-    public SessionManager (Context context) {
+    public SessionManager(Context context) {
         this._context = context;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPreferences.edit();

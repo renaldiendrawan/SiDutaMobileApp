@@ -26,7 +26,7 @@
             android:name=".artikel.ArtikelActivity"
             android:exported="false" />
         <activity
-            android:name=".GantiKataSandiActivity"
+            android:name=".model.LupaKataSandi.GantiKataSandiActivity"
             android:exported="false" />
         <activity
             android:name=".databalita.DataBalitaActivity"
@@ -45,13 +45,13 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".LupaKataSandiActivity"
+            android:name=".model.LupaKataSandi.LupaKataSandiActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".model.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".model.register.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

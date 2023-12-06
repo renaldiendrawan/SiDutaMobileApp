@@ -55,4 +55,5 @@ public class DataBalitaResponse {
     public void setImagepath(String imagepath) {
         this.imagepath = imagepath;
     }
+
 }

@@ -32,8 +32,8 @@
             android:text="Pengaturan Akun"
             android:textColor="@color/black"
             android:textSize="17dp" />
-    </LinearLayout>
 
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/PG_ly_3"
@@ -51,7 +51,7 @@
             android:layout_marginLeft="30dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:fontFamily="@font/poppinssemibold"
+            android:fontFamily="@font/poppinsmedium"
             android:onClick="onPGText5Click"
             android:text="Keluar"
             android:textColor="@color/black"
@@ -65,6 +65,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/ic_next"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -82,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_weight="1"
-            android:fontFamily="@font/poppinssemibold"
+            android:fontFamily="@font/poppinsmedium"
             android:text="Hapus Akun"
             android:textColor="#FF0000"
             android:textSize="15sp" />
@@ -94,6 +95,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/ic_next"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -41,4 +41,5 @@ public class LaporanPenimbanganModel {
     public void setTinggi_badan(String tinggi_badan) {
         this.tinggi_badan = tinggi_badan;
     }
+
 }

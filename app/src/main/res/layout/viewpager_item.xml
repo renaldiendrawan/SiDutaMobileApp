@@ -27,7 +27,7 @@
 
             <ImageView
                 android:id="@+id/gambarartikel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/gambarartikel1" />
@@ -40,10 +40,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppinsmedium"
-                android:text="@string/artikel_1"
+                android:text="Judul Artikel"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
         </RelativeLayout>
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
