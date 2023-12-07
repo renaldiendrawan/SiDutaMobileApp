@@ -124,7 +124,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         bulan = month;
                         tanggal = dayOfMonth;
 
-                        R_edt_tanggallahir.setText(tahun + "-" + bulan + "-" + tanggal);
+                        // Tambahkan 1 pada bulan sebelum menetapkan teks
+                        bulan += 1;
+
+                        // Format tanggal dengan menambahkan nol jika bulan atau tanggal < 10
+                        String formattedDate = String.format("%04d-%02d-%02d", tahun, bulan, tanggal);
+
+                        R_edt_tanggallahir.setText(formattedDate);
                     }
                 }, tahun, bulan, tanggal);
                 dialog.show();

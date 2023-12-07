@@ -82,7 +82,13 @@ public class ProfilAkunActivity extends AppCompatActivity {
                         bulan = month;
                         tanggal = dayOfMonth;
 
-                        PF_edt_tanggallahir.setText(tahun + "-" + bulan + "-" + tanggal);
+                        // Tambahkan 1 pada bulan sebelum menetapkan teks
+                        bulan += 1;
+
+                        // Format tanggal dengan menambahkan nol jika bulan atau tanggal < 10
+                        String formattedDate = String.format("%04d-%02d-%02d", tahun, bulan, tanggal);
+
+                        PF_edt_tanggallahir.setText(formattedDate);
                     }
                 }, tahun, bulan, tanggal);
                 dialog.show();
@@ -174,7 +180,6 @@ public class ProfilAkunActivity extends AppCompatActivity {
                 activityResultLauncher.launch(intent);
             }
         });
-
 
         // Shared Preferences code
         SharedPreferences sharedPreferences = getSharedPreferences("prefLogin", Context.MODE_PRIVATE);
